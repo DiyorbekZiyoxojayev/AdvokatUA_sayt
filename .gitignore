@@ -1,0 +1,6 @@
+# ⚠️ Bu fayllar Git ga yuklanmasin!
+.env
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

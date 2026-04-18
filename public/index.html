@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advokat UA | Huquqiy Yordam | Юридическая помощь | Legal Services</title>
+<meta name="description" content="Advokat UA — O'zbekistonda professional huquqiy yordam. Fuqarolik, jinoyat, biznes ishlari bo'yicha tajribali advokat. Юридическая помощь в Узбекистане.">
+<meta name="keywords" content="advokat, yurist, huquqiy yordam, advokat Toshkent, юрист Узбекистан, юридическая помощь, адвокат Ташкент, lawyer Uzbekistan, legal help, sud, shartnoma, biznes huquqi, jinoyat ishi">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Advokat UA — Professional Huquqiy Yordam">
+<meta property="og:description" content="Tajribali advokat bilan huquqlaringizni himoya qiling.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0b0f;--bg2:#111118;--bg3:#16161f;--card:#1a1a26;
+  --border:rgba(255,255,255,0.08);--text:#fff;--muted:#8b8fa8;
+  --accent:#5b6dff;--accent2:#a855f7;
+  --grad:linear-gradient(135deg,#5b6dff,#a855f7);
+  --grad-text:linear-gradient(90deg,#fff,#a0a8ff 50%,#c084fc);
+  --shadow:0 20px 60px rgba(0,0,0,.5);
+}
+[data-theme="light"]{
+  --bg:#f4f4f8;--bg2:#eaeaf0;--bg3:#e0e0ea;--card:#fff;
+  --border:rgba(0,0,0,.08);--text:#0b0b0f;--muted:#5a5a72;
+  --shadow:0 20px 60px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,11,15,.92);transition:height .3s,background .3s,box-shadow .3s}
+nav.scrolled{height:56px;background:rgba(7,7,14,.97);box-shadow:0 4px 30px rgba(0,0,0,.4)}
+[data-theme="light"] nav{background:rgba(244,244,248,.95)}
+[data-theme="light"] nav.scrolled{background:rgba(240,240,246,.98);box-shadow:0 4px 30px rgba(0,0,0,.1)}
+.logo{font-size:1.35rem;font-weight:900;letter-spacing:-.03em;text-decoration:none;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:font-size .3s}
+nav.scrolled .logo{font-size:1.15rem}
+.nav-links{display:flex;gap:.25rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.875rem;font-weight:600;padding:6px 12px;border-radius:8px;position:relative;transition:color .2s,background .2s}
+.nav-links a::after{content:'';position:absolute;bottom:2px;left:12px;right:12px;height:2px;border-radius:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:.6rem}
+.lang-pills{display:flex;gap:2px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:3px}
+.lp{background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:700;padding:4px 8px;border-radius:5px;cursor:pointer;transition:all .2s;letter-spacing:.05em}
+.lp.on{background:var(--accent);color:#fff}
+.btn-theme{background:none;border:1px solid var(--border);color:var(--muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.btn-theme:hover{border-color:var(--accent);color:var(--text)}
+.btn-nav{background:var(--grad);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s,box-shadow .2s;white-space:nowrap}
+.btn-nav:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(91,109,255,.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;transition:background .2s}
+.hamburger:hover{background:rgba(255,255,255,.06)}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .35s cubic-bezier(.4,0,.2,1);transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform-origin:left;transform:scaleX(0);transition:transform .08s linear;pointer-events:none;z-index:1}
+
+/* DRAWER */
+.m-overlay{position:fixed;inset:0;z-index:998;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .35s}
+.m-overlay.show{opacity:1;pointer-events:all}
+.m-drawer{position:fixed;top:0;right:0;bottom:0;width:min(320px,85vw);z-index:999;background:rgba(10,10,18,.97);backdrop-filter:blur(24px);border-left:1px solid var(--border);display:flex;flex-direction:column;padding:5rem 2rem 3rem;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+.m-drawer.open{transform:translateX(0)}
+.m-drawer a{font-size:1.4rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.03em;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;transition:color .2s,padding-left .2s}
+.m-drawer a:last-of-type{border-bottom:none}
+.m-drawer a:hover{color:var(--accent);padding-left:.5rem}
+.m-drawer a::after{content:'→';font-size:1rem;opacity:.4}
+.m-close{position:absolute;top:1.25rem;right:1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;width:36px;height:36px;border-radius:8px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.m-close:hover{background:rgba(255,255,255,.12)}
+.m-drawer-bottom{margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:.75rem}
+.m-dc{display:flex;align-items:center;gap:.75rem;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.m-dc:hover{color:#fff}
+.m-dc .ico{width:34px;height:34px;border-radius:8px;background:rgba(91,109,255,.15);display:flex;align-items:center;justify-content:center;font-size:1rem}
+
+/* SECTIONS */
+section{padding:7rem 5%}
+.container{max-width:1180px;margin:0 auto}
+.sec-eye{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h2{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:1.1;margin-bottom:1.2rem}
+h2 .g{background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="light"] h2 .g{background:linear-gradient(90deg,#0b0b0f,#5b6dff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s,transform .65s}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 5% 5rem;position:relative;overflow:hidden}
+.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(91,109,255,.15),transparent 60%),radial-gradient(ellipse 50% 40% at 75% 60%,rgba(168,85,247,.12),transparent 55%)}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
+[data-theme="light"] .hero-grid{background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px)}
+.hero-inner{position:relative;max-width:820px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(91,109,255,.12);border:1px solid rgba(91,109,255,.3);border-radius:100px;padding:6px 16px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#818cf8;margin-bottom:2rem;animation:fadeUp .8s ease both}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:#5b6dff;animation:pulse 2s infinite}
+h1{font-size:clamp(2.8rem,6.5vw,5.5rem);font-weight:900;line-height:1.06;letter-spacing:-.04em;margin-bottom:1.5rem;animation:fadeUp .8s .1s ease both}
+h1 .g{background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="light"] h1 .g{background:linear-gradient(90deg,#0b0b0f,#5b6dff 60%,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:560px;margin:0 auto 2.5rem;line-height:1.75;animation:fadeUp .8s .2s ease both}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .3s ease both}
+.btn-primary{background:var(--grad);color:#fff;border:none;padding:14px 28px;border-radius:10px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:opacity .2s,transform .2s,box-shadow .2s}
+.btn-primary:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 12px 30px rgba(91,109,255,.35)}
+.btn-ghost{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);padding:14px 28px;border-radius:10px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+[data-theme="light"] .btn-ghost{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.15)}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);animation:fadeUp .8s .4s ease both;flex-wrap:wrap}
+.stat-n{font-size:2.5rem;font-weight:900;letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:.78rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+
+/* TRUST STRIP */
+#trust{background:var(--bg2);padding:4rem 5%}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1180px;margin:0 auto}
+.trust-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;text-align:center;transition:transform .2s,box-shadow .2s}
+.trust-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.trust-icon{font-size:2rem;margin-bottom:.75rem}
+.trust-num{font-size:2rem;font-weight:900;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.trust-label{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:.25rem;line-height:1.4}
+.trust-desc{font-size:.75rem;color:var(--muted);margin-top:.4rem;line-height:1.5;opacity:.7}
+
+/* SERVICES */
+#services{background:var(--bg)}
+.srv-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.srv-card{background:var(--bg);padding:2.25rem 2rem;cursor:pointer;position:relative;transition:background .25s}
+.srv-card:hover,.srv-card.open{background:var(--bg3)}
+.srv-icon-wrap{width:44px;height:44px;background:rgba(91,109,255,.12);border:1px solid rgba(91,109,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.25rem;transition:all .25s}
+.srv-card:hover .srv-icon-wrap,.srv-card.open .srv-icon-wrap{background:rgba(91,109,255,.25);border-color:rgba(91,109,255,.4);box-shadow:0 0 16px rgba(91,109,255,.2)}
+.srv-card h3{font-size:1rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.6rem;line-height:1.3}
+.srv-brief{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:1rem}
+.srv-sub{display:none;list-style:none;margin-top:.75rem}
+.srv-card.open .srv-sub{display:block;animation:subSlide .3s ease both}
+@keyframes subSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.srv-sub-inner{background:linear-gradient(135deg,rgba(91,109,255,.07),rgba(168,85,247,.05));border:1px solid rgba(91,109,255,.18);border-radius:10px;padding:1rem 1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+.srv-sub li{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text);padding:7px 8px;border-radius:7px;font-weight:600;line-height:1.4;transition:background .18s}
+.srv-sub li:hover{background:rgba(91,109,255,.1)}
+.srv-sub-icon{width:26px;height:26px;flex-shrink:0;background:var(--grad);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;font-weight:900;font-style:normal}
+.srv-toggle{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--accent);cursor:pointer;background:rgba(91,109,255,.1);border:1px solid rgba(91,109,255,.2);border-radius:20px;padding:5px 12px;font-family:'Inter',sans-serif;letter-spacing:.03em;transition:all .2s}
+.srv-toggle:hover{background:rgba(91,109,255,.2)}
+.srv-card.open .srv-toggle{background:rgba(91,109,255,.2);border-color:var(--accent)}
+.arr{transition:transform .3s cubic-bezier(.4,0,.2,1);display:inline-block}
+.srv-card.open .arr{transform:rotate(180deg)}
+
+/* PROCESS */
+#process{background:var(--bg2)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:.3;pointer-events:none}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;text-align:center;position:relative;transition:transform .2s,box-shadow .2s}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--grad);color:#fff;font-weight:900;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.step-card h4{font-size:.95rem;font-weight:800;margin-bottom:.5rem;letter-spacing:-.01em}
+.step-card p{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg);overflow:hidden}
+.testi-track-wrap{position:relative;margin-top:3rem;overflow:hidden;border-radius:16px}
+.testi-track{display:flex;gap:1.5rem;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.testi-card{flex:0 0 calc(33.333% - 1rem);min-width:300px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;overflow:hidden}
+.testi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.testi-quote{font-size:2.5rem;line-height:1;color:var(--accent);opacity:.4;font-family:Georgia,serif;margin-bottom:.5rem}
+.testi-text{font-size:.875rem;line-height:1.75;color:var(--text);margin-bottom:1.25rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;color:#fff;flex-shrink:0}
+.testi-name{font-size:.82rem;font-weight:800;line-height:1.3}
+.testi-role{font-size:.72rem;color:var(--muted);margin-top:2px}
+.testi-stars{color:#f59e0b;font-size:.8rem;margin-bottom:.5rem;letter-spacing:2px}
+.testi-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem}
+.testi-btn{width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.testi-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.testi-dots{display:flex;gap:6px}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;cursor:pointer}
+.testi-dot.on{background:var(--accent);width:24px;border-radius:4px}
+
+/* NEWS */
+#news{background:var(--bg2);overflow:hidden}
+.news-header{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.news-refresh{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--accent);cursor:pointer;background:rgba(91,109,255,.1);border:1px solid rgba(91,109,255,.2);border-radius:20px;padding:6px 14px;font-family:'Inter',sans-serif;transition:all .2s}
+.news-refresh:hover{background:rgba(91,109,255,.2)}
+.news-refresh.spinning svg{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.news-track-wrap{position:relative;overflow:hidden;border-radius:16px}
+.news-track{display:flex;gap:1.25rem;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.news-card{flex:0 0 calc(33.333% - .85rem);min-width:280px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color .2s}
+.news-card:hover{border-color:rgba(91,109,255,.3)}
+.news-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+.news-cat{display:inline-flex;align-items:center;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:rgba(91,109,255,.1);border-radius:20px;padding:3px 10px;margin-bottom:1rem}
+.news-card h4{font-size:.92rem;font-weight:800;line-height:1.4;margin-bottom:.75rem;letter-spacing:-.01em}
+.news-card p{font-size:.8rem;color:var(--muted);line-height:1.65}
+.news-date{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);font-weight:600;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.news-skeleton{flex:0 0 calc(33.333% - .85rem);min-width:280px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;height:200px;position:relative;overflow:hidden}
+.news-skeleton::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.news-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem}
+.news-btn{width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.news-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.news-dots{display:flex;gap:6px}
+.news-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;cursor:pointer}
+.news-dot.on{background:var(--accent);width:24px;border-radius:4px}
+
+/* AI */
+#ai-assistant{background:var(--bg)}
+.ai-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:3rem}
+.ai-topbar{padding:1rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(91,109,255,.06);display:flex;align-items:center;gap:10px}
+.ai-dot{width:10px;height:10px;border-radius:50%;background:var(--grad);animation:pulse 2s infinite}
+.ai-tb-title{font-size:.82rem;font-weight:800;color:var(--text);letter-spacing:.03em}
+.ai-tb-note{margin-left:auto;font-size:.72rem;color:var(--muted)}
+.ai-body{padding:2rem}
+.ai-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg label{display:block;margin-bottom:5px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.fg select,.fg textarea,.fg input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Inter',sans-serif;font-size:.875rem;font-weight:500;transition:border-color .2s;resize:vertical}
+.fg select:focus,.fg textarea:focus,.fg input:focus{outline:none;border-color:var(--accent)}
+[data-theme="light"] .fg select,[data-theme="light"] .fg textarea{background:var(--bg3)}
+.fg select option{background:var(--card)}
+.ai-out{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;min-height:140px;font-size:.875rem;line-height:1.75;color:var(--muted);margin-top:1rem;white-space:pre-wrap;display:none}
+.ai-out.show{display:block}
+.ai-loading{display:flex;align-items:center;gap:8px;color:var(--accent);font-size:.85rem;font-weight:600}
+.dots::after{content:'';animation:dotanim 1.5s infinite}
+@keyframes dotanim{0%,20%{content:'.'}40%,60%{content:'..'}80%,100%{content:'...'}}
+
+/* FAQ */
+#faq{background:var(--bg2)}
+.faq-list{margin-top:3rem;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:rgba(91,109,255,.3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;cursor:pointer;font-weight:700;font-size:.95rem;transition:color .2s}
+.faq-q:hover{color:var(--accent)}
+.faq-item.open .faq-q{color:var(--accent)}
+.faq-arrow{width:28px;height:28px;border-radius:50%;background:rgba(91,109,255,.1);border:1px solid rgba(91,109,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.75rem;transition:transform .3s,background .2s}
+.faq-item.open .faq-arrow{transform:rotate(180deg);background:var(--accent);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 1.5rem 1.25rem;font-size:.875rem;color:var(--muted);line-height:1.75}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem;margin-top:3rem}
+.c-info h3{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:1.75rem}
+.c-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.c-ico{width:42px;height:42px;flex-shrink:0;background:rgba(91,109,255,.1);border:1px solid rgba(91,109,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.c-item a{font-size:.95rem;font-weight:700;color:var(--text);text-decoration:none;transition:color .2s}
+.c-item a:hover{color:var(--accent)}
+.c-item p{font-size:.78rem;color:var(--muted);margin-top:2px}
+.c-note{margin-top:2rem;padding:1.25rem;background:rgba(91,109,255,.08);border:1px solid rgba(91,109,255,.2);border-radius:10px;font-size:.82rem;color:var(--muted);line-height:1.7}
+.c-form h3{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:1.75rem}
+.cfield{margin-bottom:.875rem}
+.cfield label{display:block;margin-bottom:5px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.cfield input,.cfield textarea,.cfield select{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:'Inter',sans-serif;font-size:.875rem;font-weight:500;transition:border-color .2s;resize:vertical}
+.cfield input:focus,.cfield textarea:focus,.cfield select:focus{outline:none;border-color:var(--accent)}
+[data-theme="light"] .cfield input,[data-theme="light"] .cfield textarea,[data-theme="light"] .cfield select{background:var(--bg2)}
+.cfield select option{background:var(--card)}
+.form-msg{display:none;margin-top:.75rem;padding:10px 14px;border-radius:8px;font-size:.82rem;font-weight:700}
+.form-msg.ok{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2);display:block}
+.form-msg.err{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2);display:block}
+
+/* FOOTER */
+footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
+[data-theme="light"] footer{background:#0b0b0f}
+.foot-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-size:1.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.foot-copy{font-size:.78rem;color:#444458}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{color:#444458;text-decoration:none;font-size:.78rem;font-weight:600;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+
+/* FLOATS */
+.tg-btn{position:fixed;bottom:5.5rem;right:1.75rem;width:50px;height:50px;border-radius:50%;background:#229ED9;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;z-index:500;box-shadow:0 4px 20px rgba(34,158,217,.45);transition:transform .2s}
+.tg-btn:hover{transform:scale(1.1) translateY(-2px)}
+.bk-top{position:fixed;bottom:1.75rem;right:1.75rem;width:42px;height:42px;border-radius:50%;background:var(--grad);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;z-index:500;box-shadow:0 4px 20px rgba(91,109,255,.4);opacity:0;transform:translateY(8px);transition:all .25s}
+.bk-top.show{opacity:1;transform:translateY(0)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .process-steps::before{display:none}
+  .testi-card,.news-card,.news-skeleton{flex:0 0 calc(50% - .625rem)}
+}
+@media(max-width:900px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .ai-row{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+@media(max-width:640px){
+  section{padding:4.5rem 1.25rem}
+  nav{padding:0 1.25rem}
+  .hero{padding:7rem 1.25rem 4rem}
+  .srv-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .process-steps{grid-template-columns:1fr}
+  .testi-card,.news-card,.news-skeleton{flex:0 0 calc(100% - 0rem)}
+  .srv-sub-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- OVERLAY -->
+<div class="m-overlay" id="mOverlay" onclick="closeDrawer()"></div>
+
+<!-- SIDE DRAWER -->
+<div class="m-drawer" id="drawer">
+  <button class="m-close" onclick="closeDrawer()">✕</button>
+  <a href="#home" onclick="closeDrawer()" data-i18n="nav_home">Bosh sahifa</a>
+  <a href="#services" onclick="closeDrawer()" data-i18n="nav_services">Xizmatlar</a>
+  <a href="#process" onclick="closeDrawer()" data-i18n="nav_process">Jarayon</a>
+  <a href="#testimonials" onclick="closeDrawer()" data-i18n="nav_testi">Mijozlar</a>
+  <a href="#news" onclick="closeDrawer()" data-i18n="nav_news">Yangiliklar</a>
+  <a href="#faq" onclick="closeDrawer()">FAQ</a>
+  <a href="#contact" onclick="closeDrawer()" data-i18n="nav_contact">Bog'lanish</a>
+  <div class="m-drawer-bottom">
+    <a href="tel:+998935719781" class="m-dc"><span class="ico">📱</span>+998 93 571 97 81</a>
+    <a href="https://t.me/Advokatcolonel" target="_blank" class="m-dc"><span class="ico">✈️</span>@Advokatcolonel</a>
+  </div>
+</div>
+
+<nav id="mainNav">
+  <div class="nav-progress" id="navProgress"></div>
+  <a href="#" class="logo">AdvokatUA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" data-i18n="nav_home">Bosh sahifa</a></li>
+    <li><a href="#services" data-i18n="nav_services">Xizmatlar</a></li>
+    <li><a href="#process" data-i18n="nav_process">Jarayon</a></li>
+    <li><a href="#testimonials" data-i18n="nav_testi">Mijozlar</a></li>
+    <li><a href="#news" data-i18n="nav_news">Yangiliklar</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Bog'lanish</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-pills">
+      <button class="lp on" onclick="setLang('uz')">UZ</button>
+      <button class="lp" onclick="setLang('oz')">ЎЗ</button>
+      <button class="lp" onclick="setLang('en')">EN</button>
+      <button class="lp" onclick="setLang('ru')">RU</button>
+    </div>
+    <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    <a href="#contact" class="btn-nav" data-i18n="nav_cta">Bepul maslahat</a>
+    <button class="hamburger" id="hamburger" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="hero-dot"></div><span data-i18n="hero_badge">Professional huquqiy yordam</span></div>
+    <h1><span data-i18n="hero_h1a">Huquqlaringiz —</span><br><span class="g" data-i18n="hero_h1b">bizning mas'uliyat</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">O'zbekistonda yuqori malakali huquqiy xizmatlar. Fuqarolik, jinoyat va biznes ishlari bo'yicha tajribali advokat bilan himoyalanishingiz mumkin.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary" data-i18n="hero_btn1">Bepul maslahat →</a>
+      <a href="#services" class="btn-ghost" data-i18n="hero_btn2">Xizmatlarimiz</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">10+</div><div class="stat-l" data-i18n="stat1">Yillik tajriba</div></div>
+      <div><div class="stat-n">500+</div><div class="stat-l" data-i18n="stat2">Muvaffaqiyatli ish</div></div>
+      <div><div class="stat-n">98%</div><div class="stat-l" data-i18n="stat3">Mijozlar mamnuniyati</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section id="trust">
+  <div class="container">
+    <div class="trust-grid reveal">
+      <div class="trust-card"><div class="trust-icon">📜</div><div class="trust-num" data-i18n="tr1n">Litsenziya</div><div class="trust-label" data-i18n="tr1l">O'zbekiston Respublikasi Advokatlar palatasi</div></div>
+      <div class="trust-card"><div class="trust-icon">⚖️</div><div class="trust-num">10+</div><div class="trust-label" data-i18n="tr2l">Yillik advokatura tajribasi</div><div class="trust-desc" data-i18n="tr2d">Fuqarolik, jinoyat, iqtisodiy ishlar</div></div>
+      <div class="trust-card"><div class="trust-icon">🏆</div><div class="trust-num">500+</div><div class="trust-label" data-i18n="tr3l">Muvaffaqiyatli ish</div><div class="trust-desc" data-i18n="tr3d">Sudda va sudgacha hal etilgan</div></div>
+      <div class="trust-card"><div class="trust-icon">🔒</div><div class="trust-num" data-i18n="tr4n">Sir</div><div class="trust-label" data-i18n="tr4l">Advokat siri kafolati</div><div class="trust-desc" data-i18n="tr4d">Qonun bilan himoyalangan maxfiylik</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="srv-header reveal">
+      <div>
+        <p class="sec-eye" data-i18n="srv_eye">Xizmatlarimiz</p>
+        <h2><span class="g" data-i18n="srv_h2">Barcha huquqiy masalalar</span></h2>
+        <p class="sec-sub" data-i18n="srv_sub">O'zbekiston qonunchiligi doirasida keng qamrovli huquqiy xizmatlar.</p>
+      </div>
+    </div>
+    <div class="srv-grid reveal" style="transition-delay:.1s">
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">⚖️</div><h3 data-i18n="s1h">Maslahat va tushuntirishlar</h3><p class="srv-brief" data-i18n="s1b">Og'zaki va yozma ravishda qonun hujjatlari bo'yicha professional tushuntirishlar.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s1"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🏛️</div><h3 data-i18n="s2h">Fuqarolik va iqtisodiy ishlarda vakillik</h3><p class="srv-brief" data-i18n="s2b">Meros, uy-joy, oilaviy nizolar, zarar qoplash va iqtisodiy sudlarda vakillik.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s2"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🛡️</div><h3 data-i18n="s3h">Jinoyat ishlari bo'yicha himoya</h3><p class="srv-brief" data-i18n="s3b">Dastlabki tergovdan sudgacha — har bir bosqichda to'liq huquqiy himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s3"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">💼</div><h3 data-i18n="s4h">Tadbirkorlik subyektlariga xizmat</h3><p class="srv-brief" data-i18n="s4b">Biznes hujjatlarini qonunga muvofiqlashtirish va tekshiruvlarda himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s4"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🏢</div><h3 data-i18n="s5h">Korporativ va biznes huquqi</h3><p class="srv-brief" data-i18n="s5b">Kompaniya tashkil qilishdan tugatishgacha — to'liq huquqiy hamrohlik.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s5"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">📋</div><h3 data-i18n="s6h">Shartnomaviy-huquqiy ishlar</h3><p class="srv-brief" data-i18n="s6b">Shartnomalarni ekspertizadan o'tkazish va lokal hujjatlarni tayyorlash.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s6"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🏠</div><h3 data-i18n="s7h">Ko'chmas mulk va yer masalalari</h3><p class="srv-brief" data-i18n="s7b">Mulk tozaligini tekshirish, yer huquqlarini rasmiylashtirish.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s7"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">👨‍👩‍👧</div><h3 data-i18n="s8h">Oilaviy va meros ishlari</h3><p class="srv-brief" data-i18n="s8b">Aliment, mol-mulk bo'linishi, meros va intellektual mulk huquqini himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s8"></ul></div>
+      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🔍</div><h3 data-i18n="s9h">Maxsus vakolat: advokatlik so'rovi</h3><p class="srv-brief" data-i18n="s9b">Davlat organlaridan hujjatlarni majburiy tartibda talabga ko'ra olish.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s9"></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-eye" data-i18n="proc_eye">Ish jarayoni</p>
+      <h2><span class="g" data-i18n="proc_h2">Qanday ishlashimiz</span></h2>
+      <p class="sec-sub" data-i18n="proc_sub">To'rtta oddiy qadamda muammoyingizni hal etamiz.</p>
+    </div>
+    <div class="process-steps reveal" style="transition-delay:.1s">
+      <div class="step-card"><div class="step-num">1</div><h4 data-i18n="p1h">Murojaat</h4><p data-i18n="p1t">Telefon, Telegram yoki forma orqali biz bilan bog'laning. Dastlabki maslahat bepul.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h4 data-i18n="p2h">Tahlil</h4><p data-i18n="p2t">Ishingizni batafsil ko'rib chiqamiz, hujjatlarni o'rganamiz va huquqiy yo'l xaritasini tuzamiz.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h4 data-i18n="p3h">Himoya</h4><p data-i18n="p3t">Sud yoki davlat organlarida sizning manfaatingizni to'liq himoya qilamiz.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h4 data-i18n="p4h">Natija</h4><p data-i18n="p4t">Ishni muvaffaqiyatli yakunlaymiz va keyingi qadamlar bo'yicha maslahat beramiz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-eye" data-i18n="testi_eye">Mijozlar sharhlari</p>
+      <h2><span class="g" data-i18n="testi_h2">Ular nima deydi</span></h2>
+      <p class="sec-sub" data-i18n="testi_sub">Real mijozlarimizning real natijalari.</p>
+    </div>
+    <div class="testi-track-wrap reveal" style="transition-delay:.1s">
+      <div class="testi-track" id="testiTrack"></div>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn" onclick="testiMove(-1)">←</button>
+      <div class="testi-dots" id="testiDots"></div>
+      <button class="testi-btn" onclick="testiMove(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="container">
+    <div class="news-header reveal">
+      <div>
+        <p class="sec-eye" data-i18n="news_eye">Yangiliklar</p>
+        <h2><span class="g" data-i18n="news_h2">Qonunchilik yangiliklari</span></h2>
+        <p class="sec-sub" data-i18n="news_sub">O'zbekiston qonunchiligi va huquqiy sohada so'nggi o'zgarishlar.</p>
+      </div>
+      <button class="news-refresh" id="newsRefresh" onclick="loadNews()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        <span data-i18n="news_refresh">Yangilash</span>
+      </button>
+    </div>
+    <div class="news-track-wrap reveal" style="transition-delay:.1s">
+      <div class="news-track" id="newsTrack">
+        <div class="news-skeleton"></div><div class="news-skeleton"></div><div class="news-skeleton"></div>
+      </div>
+    </div>
+    <div class="news-controls">
+      <button class="news-btn" onclick="newsMove(-1)">←</button>
+      <div class="news-dots" id="newsDots"></div>
+      <button class="news-btn" onclick="newsMove(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<section id="ai-assistant">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-eye" data-i18n="ai_eye">AI yordamchi</p>
+      <h2><span class="g" data-i18n="ai_h2">Namunaviy hujjat tayyorlash</span></h2>
+      <p class="sec-sub" data-i18n="ai_sub">Vaziyatingizni tasvirlab bering — namunaviy ariza, shartnoma yoki shikoyat tuzib beradi.</p>
+    </div>
+    <div class="ai-wrap reveal" style="transition-delay:.1s">
+      <div class="ai-topbar">
+        <div class="ai-dot"></div>
+        <span class="ai-tb-title" data-i18n="ai_title">Huquqiy hujjat yordamchisi</span>
+        <span class="ai-tb-note" data-i18n="ai_note">Namuna — advokat tasdiqlashi tavsiya etiladi</span>
+      </div>
+      <div class="ai-body">
+        <div class="ai-row">
+          <div class="fg"><label data-i18n="ai_type">Hujjat turi</label>
+            <select id="docType">
+              <option value="ariza" data-i18n="d_ariza">Ariza</option>
+              <option value="shartnoma" data-i18n="d_shartnoma">Shartnoma</option>
+              <option value="shikoyat" data-i18n="d_shikoyat">Shikoyat</option>
+              <option value="pretenziya" data-i18n="d_pretenziya">Pretenziya</option>
+              <option value="vakola" data-i18n="d_vakola">Vakolatnoma</option>
+            </select>
+          </div>
+          <div class="fg"><label data-i18n="ai_lang">Til</label>
+            <select id="docLang">
+              <option value="uzbek_latin">O'zbek (lotin)</option>
+              <option value="uzbek_cyrillic">Ўзбек (кирилл)</option>
+              <option value="russian">Русский</option>
+              <option value="english">English</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg" style="margin-bottom:1rem">
+          <label data-i18n="ai_desc">Vaziyatni qisqacha tasvirlab bering</label>
+          <textarea id="docDesc" rows="4" placeholder="Masalan: Uy egasi menga ijara haqi to'lagan bo'lsam ham uyni bo'shatishni talab qilmoqda..."></textarea>
+        </div>
+        <button class="btn-primary" id="genBtn" onclick="generateDoc()" data-i18n="ai_btn">✨ Hujjat yaratish</button>
+        <div class="ai-out" id="aiOut"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-eye">FAQ</p>
+      <h2><span class="g" data-i18n="faq_h2">Ko'p so'raladigan savollar</span></h2>
+      <p class="sec-sub" data-i18n="faq_sub">Eng ko'p beriladigan savollarga javoblar.</p>
+    </div>
+    <div class="faq-list reveal" style="transition-delay:.1s" id="faqList"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <p class="sec-eye" data-i18n="c_eye">Bog'lanish</p>
+      <h2><span class="g" data-i18n="c_h2">Biz bilan bog'laning</span></h2>
+    </div>
+    <div class="contact-grid reveal" style="transition-delay:.1s">
+      <div class="c-info">
+        <h3 data-i18n="c_sub">Bepul dastlabki maslahat olish uchun murojaat qiling</h3>
+        <div class="c-item"><div class="c-ico">📱</div><div><a href="tel:+998935719781">+998 93 571 97 81</a><p data-i18n="c_call">Qo'ng'iroq qiling</p></div></div>
+        <div class="c-item"><div class="c-ico">✈️</div><div><a href="https://t.me/Advokatcolonel" target="_blank">@Advokatcolonel</a><p data-i18n="c_tg">Telegram orqali yozing</p></div></div>
+        <div class="c-item"><div class="c-ico">📍</div><div><a data-i18n="c_city">Toshkent, O'zbekiston</a><p data-i18n="c_off">Ofisga tashrif buyuring</p></div></div>
+        <div class="c-note" data-i18n="c_note">💡 Murojaat qabul qilingandan so'ng 24 soat ichida javob beramiz. Barcha ma'lumotlar maxfiy saqlanadi.</div>
+      </div>
+      <div class="c-form">
+        <h3 data-i18n="cf_title">Xabar yuboring</h3>
+        <div class="cfield"><label data-i18n="cf_name">Ismingiz</label><input type="text" id="cName" maxlength="100" placeholder="To'liq ismingiz"></div>
+        <div class="cfield"><label data-i18n="cf_phone">Telefon raqam</label><input type="tel" id="cPhone" maxlength="20" placeholder="+998 XX XXX XX XX"></div>
+        <div class="cfield"><label data-i18n="cf_issue">Muammo turi</label>
+          <select id="cIssue">
+            <option data-i18n="o1">Fuqarolik ishi</option>
+            <option data-i18n="o2">Jinoyat ishi</option>
+            <option data-i18n="o3">Biznes / korporativ</option>
+            <option data-i18n="o4">Oilaviy masala</option>
+            <option data-i18n="o5">Ko'chmas mulk</option>
+            <option data-i18n="o6">Boshqa</option>
+          </select>
+        </div>
+        <div class="cfield"><label data-i18n="cf_msg">Xabar</label><textarea id="cMsg" rows="4" maxlength="1000" placeholder="Muammoingizni qisqacha bayon qiling..."></textarea></div>
+        <button class="btn-primary" onclick="sendContact()" style="width:100%" data-i18n="cf_send">Xabar yuborish →</button>
+        <div class="form-msg" id="fMsg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">AdvokatUA</div>
+    <p class="foot-copy" data-i18n="fc">© 2025 Advokat UA. Barcha huquqlar himoyalangan.</p>
+    <div class="foot-links">
+      <a href="#home" data-i18n="nav_home">Bosh sahifa</a>
+      <a href="#services" data-i18n="nav_services">Xizmatlar</a>
+      <a href="#contact" data-i18n="nav_contact">Aloqa</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://t.me/Advokatcolonel" target="_blank" class="tg-btn">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+</a>
+<button class="bk-top" id="bkTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ══════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════
+
+// TESTIMONIALS — 4 tilda
+const TESTIS = {
+  uz:[
+    {name:"Yakubova Yasmin Baxtiyorovna",role:"Jismoniy shaxs",avatar:"ЯЯ",stars:"★★★★★",
+     text:"Qo'shnim qurilish ishlari davomida mening uyimga jiddiy zarar yetkazgan edi. Boshida bu masalani o'zim hal qila olmasdim — sudlar, hujjatlar, ekspertizalar. Advokat UA jamoasi yordamida zarar to'liq qoplandi. Sizlarga cheksiz minnatdorchilik bildiraman!"},
+    {name:"OPETIT BEST МЧЖ — Popkova Marina Stanislavovna",role:"Rahbar",avatar:"ПМ",stars:"★★★★★",
+     text:"Soliq organi tomonidan bizga nisbatan noqonuniy ma'muriy javobgarlik to'g'risida jarima qo'llanilgan edi. Advokat UA mutaxassislari hujjatlarni chuqur tahlil qilib, ushbu qarorning qonuniy asossizligini isbotladi. Jarima to'liq bekor qilindi. Professionalligi va tezkorligi uchun katta rahmat!"},
+    {name:"OPTIMUM GROUP EXCLUSIVE RAMZAY МЧЖ",role:"Rahbariyat",avatar:"ОГ",stars:"★★★★★",
+     text:"Xitoy kompaniyasi bilan 34.918 AQSh dollari miqdoridagi tovar yetkazib berish shartnomasi bo'yicha yirik qarzdorlik yuzaga keldi. \"CIP Tashkent\" qoidasi asosida tuzilgan murakkab xalqaro shartnoma bo'yicha Advokat UA barcha qarzni sudda muvaffaqiyatli undirib berdi. Har doim tavsiya etaman!"},
+    {name:"Hamitbaeva Guzal Tursunovna",role:"Jismoniy shaxs",avatar:"ХГ",stars:"★★★★★",
+     text:"Menga nisbatan Yuqorichirchiq tumanlararo sudi tomonidan 65.018.414 so'm va 2.600.736 so'm davlat boji miqdorida sud buyrug'i chiqarilgan edi. Advokat UA yordamida ushbu buyruq muvaffaqiyatli bekor qilindi. Malakali va ishonchli mutaxassislar!"},
+    {name:"Azimov Botir Hamidovich",role:"Tadbirkor",avatar:"АБ",stars:"★★★★★",
+     text:"Biznesimizda soliq tekshiruvi paytida huquqlarimizni bilmay katta xatoga yo'l qo'yay deb qoldim. Advokat UA mutaxassislari joyiga kelib, tekshiruv davomida bizni to'liq himoya qildi. Hech qanday jarima qo'llanilmadi. Tavsiya etaman!"},
+    {name:"Rашidova Dilnoza Kamoliddinovna",role:"Jismoniy shaxs",avatar:"РД",stars:"★★★★★",
+     text:"Ajrim va mulk bo'linishi masalasida ancha qiynalib qolgan edim. Advokat UA barcha hujjatlarni tayyorladi, sudda meni vakillik qildi va natijada adolatli qaror chiqdi. Juda professional xizmat!"}
+  ],
+  oz:[
+    {name:"Якубова Ясмин Бахтиёровна",role:"Жисмоний шахс",avatar:"ЯЯ",stars:"★★★★★",
+     text:"Қўшним қурилиш ишлари давомида менинг уйимга жиддий зарар етказган эди. Бошида бу масалани ўзим ҳал қила олмасдим — судлар, ҳужжатлар, экспертизалар. Адвокат UA жамоаси ёрдамида зарар тўлиқ қопланди. Сизларга чексиз миннатдорчилик билдираман!"},
+    {name:"OPETIT BEST МЧЖ — Попкова Марина Станиславовна",role:"Раҳбар",avatar:"ПМ",stars:"★★★★★",
+     text:"Солиқ органи томонидан бизга нисбатан ноқонуний маъмурий жавобгарлик тўғрисида жарима қўлланилган эди. Адвокат UA мутахассислари ҳужжатларни чуқур таҳлил қилиб, ушбу қарорнинг қонуний асоссизлигини исботлади. Жарима тўлиқ бекор қилинди. Профессионаллиги ва тезкорлиги учун катта раҳмат!"},
+    {name:"OPTIMUM GROUP EXCLUSIVE RAMZAY МЧЖ",role:"Раҳбарият",avatar:"ОГ",stars:"★★★★★",
+     text:"Хитой компанияси билан 34.918 АҚШ доллари миқдоридаги товар етказиб бериш шартномаси бўйича йирик қарздорлик юзага келди. \"CIP Toshkent\" қоидаси асосида тузилган мураккаб халқаро шартнома бўйича Адвокат UA барча қарзни судда муваффақиятли ундириб берди."},
+    {name:"Ҳамитбаева Гузал Турсунована",role:"Жисмоний шахс",avatar:"ХГ",stars:"★★★★★",
+     text:"Менга нисбатан Юқоричирчиқ туманлараро суди томонидан 65.018.414 сўм ва 2.600.736 сўм давлат божи миқдорида суд буйруғи чиқарилган эди. Адвокат UA ёрдамида ушбу буйруқ муваффақиятли бекор қилинди."},
+    {name:"Азимов Ботир Ҳамидович",role:"Тадбиркор",avatar:"АБ",stars:"★★★★★",
+     text:"Бизнесимизда солиқ текшируви пайтида ҳуқуқларимизни билмай катта хатога йўл қўяй деб қолдим. Адвокат UA мутахассислари жойига келиб, текширув давомида бизни тўлиқ ҳимоя қилди. Ҳеч қандай жарима қўлланилмади."},
+    {name:"Рашидова Дилноза Камолиддинована",role:"Жисмоний шахс",avatar:"РД",stars:"★★★★★",
+     text:"Ажрим ва мулк бўлиниши масаласида анча қийналиб қолган эдим. Адвокат UA барча ҳужжатларни тайёрлади, судда мени вакиллик қилди ва натижада адолатли қарор чиқди."}
+  ],
+  ru:[
+    {name:"Якубова Ясмин Бахтиёровна",role:"Физическое лицо",avatar:"ЯЯ",stars:"★★★★★",
+     text:"Сосед в ходе строительных работ нанёс серьёзный ущерб моему дому. Я не могла самостоятельно справиться с судами, документами и экспертизами. Команда Advokat UA помогла добиться полного возмещения ущерба. Безмерно благодарна!"},
+    {name:"OPETIT BEST ООО — Попкова Марина Станиславовна",role:"Руководитель",avatar:"ПМ",stars:"★★★★★",
+     text:"Налоговый орган незаконно применил к нам административную ответственность в виде штрафа. Специалисты Advokat UA провели глубокий анализ документов и доказали незаконность решения. Штраф был полностью отменён. Огромное спасибо за профессионализм!"},
+    {name:"OPTIMUM GROUP EXCLUSIVE RAMZAY ООО",role:"Руководство",avatar:"ОГ",stars:"★★★★★",
+     text:"По договору поставки с китайской компанией возникла крупная задолженность в размере 34 918 долларов США по условиям CIP Ташкент. Advokat UA успешно взыскала весь долг через суд. Рекомендую всем!"},
+    {name:"Хамитбаева Гузал Турсуновна",role:"Физическое лицо",avatar:"ХГ",stars:"★★★★★",
+     text:"В отношении меня был вынесен судебный приказ на сумму 65 018 414 сум и 2 600 736 сум госпошлины. При помощи Advokat UA судебный приказ был успешно отменён. Квалифицированные и надёжные специалисты!"},
+    {name:"Азимов Ботир Хамидович",role:"Предприниматель",avatar:"АБ",stars:"★★★★★",
+     text:"Во время налоговой проверки я едва не допустил серьёзную ошибку из-за незнания своих прав. Специалисты Advokat UA прибыли на место и обеспечили полную защиту. Никаких штрафов применено не было."},
+    {name:"Рашидова Дилноза Камолиддинованна",role:"Физическое лицо",avatar:"РД",stars:"★★★★★",
+     text:"Я долго не могла решить вопрос о разводе и разделе имущества. Advokat UA подготовила все документы, представляла мои интересы в суде, и в итоге было вынесено справедливое решение."}
+  ],
+  en:[
+    {name:"Yakubova Yasmin Baxtiyorovna",role:"Individual",avatar:"YY",stars:"★★★★★",
+     text:"My neighbour caused serious damage to my property during construction work. I couldn't handle the courts, documents and expert assessments on my own. With Advokat UA's help, full compensation was recovered. Endlessly grateful!"},
+    {name:"OPETIT BEST LLC — Popkova Marina Stanislavovna",role:"Director",avatar:"PM",stars:"★★★★★",
+     text:"A tax authority unlawfully imposed an administrative fine on our company. Advokat UA specialists thoroughly analysed the documents and proved the decision was unlawful. The fine was fully cancelled. Thank you for your professionalism!"},
+    {name:"OPTIMUM GROUP EXCLUSIVE RAMZAY LLC",role:"Management",avatar:"OG",stars:"★★★★★",
+     text:"A major debt of USD 34,918 arose under a supply contract with a Chinese company on CIP Tashkent terms. Advokat UA successfully recovered the full amount through court proceedings. Highly recommended!"},
+    {name:"Hamitbaeva Guzal Tursunovna",role:"Individual",avatar:"HG",stars:"★★★★★",
+     text:"A court order was issued against me for 65,018,414 soums plus 2,600,736 soums in state duty. With Advokat UA's assistance, the court order was successfully overturned. Skilled and trustworthy specialists!"},
+    {name:"Azimov Botir Hamidovich",role:"Entrepreneur",avatar:"AB",stars:"★★★★★",
+     text:"During a tax audit I nearly made a serious mistake through ignorance of my rights. Advokat UA specialists arrived on site and provided full protection throughout the inspection. No fines were applied."},
+    {name:"Rashidova Dilnoza Kamoliddinovna",role:"Individual",avatar:"RD",stars:"★★★★★",
+     text:"I had been struggling with divorce and property division for a long time. Advokat UA prepared all documents, represented me in court, and a fair judgement was ultimately delivered."}
+  ]
+};
+
+// FAQ — 4 tilda
+const FAQS = {
+  uz:[
+    {q:"Dastlabki maslahat pullikmi?",a:"Yo'q, dastlabki maslahat mutlaqo bepul. Muammoingizni bayon qiling, biz sizga yo'nalish ko'rsatamiz."},
+    {q:"Sud jarayoni qancha vaqt oladi?",a:"Bu ishning murakkabligiga bog'liq. Oddiy fuqarolik ishlari 1–3 oy, murakkabroqlari 6–12 oy yoki undan ko'proq vaqt olishi mumkin. Biz jarayonni tezlashtirish uchun barcha choralarni ko'ramiz."},
+    {q:"Masofadan turib maslahat olsa bo'ladimi?",a:"Ha, Telegram, telefon yoki video-qo'ng'iroq orqali maslahat olishingiz mumkin. Hujjatlarni elektron ko'rinishda yuborishingiz mumkin."},
+    {q:"Advokat siri nima?",a:"Advokat siri — bu siz bilan bo'lgan barcha muloqot va hujjatlar maxfiy saqlanishini kafolatlaydi. Bu qonun bilan himoyalangan huquq bo'lib, hech kim bu ma'lumotlarni talab qila olmaydi."},
+    {q:"Agar ish yutqizsak nima bo'ladi?",a:"Har qanday ish uchun to'liq kafolat berish mumkin emas. Lekin biz eng kuchli himoyani taqdim etamiz. Apellyatsiya va kassatsiya imkoniyatlari ham mavjud."},
+    {q:"Xizmat narxi qancha?",a:"Narx ish turiga va murakkabligiga qarab belgilanadi. Dastlabki baholash uchun biz bilan bog'laning — narxni aniqlab beramiz."},
+    {q:"Biznes uchun doimiy huquqiy xizmat bormi?",a:"Ha, korxonalar uchun huquqiy kuzatuv (outsourcing) xizmati mavjud. Oy sayin belgilangan to'lov evaziga barcha huquqiy masalalaringiz biz tomonidan hal etiladi."},
+    {q:"Hujjatlarimni qanday topshiraman?",a:"Hujjatlarni ofisga olib kelishingiz, yoki skan/foto ko'rinishida Telegram orqali yuborishingiz mumkin."}
+  ],
+  oz:[
+    {q:"Дастлабки маслаҳат пуллими?",a:"Йўқ, дастлабки маслаҳат мутлақо бепул. Муаммоингизни баён қилинг, биз сизга йўналиш кўрсатамиз."},
+    {q:"Суд жараёни қанча вақт олади?",a:"Бу ишнинг мураккабligiga боғлиқ. Оддий фуқаролик ишлари 1–3 ой, мураккаброқлари 6–12 ой ёки ундан кўпроқ вақт олиши мумкин."},
+    {q:"Масофадан туриб маслаҳат олса бўладими?",a:"Ҳа, Telegram, телефон ёки видео-қўнғироқ орқали маслаҳат олишингиз мумкин. Ҳужжатларни электрон кўринишда юборишингиз мумкин."},
+    {q:"Адвокат сири нима?",a:"Адвокат сири — бу сиз билан бўлган барча мулоқот ва ҳужжатлар махфий сақланишини кафолатлайди. Бу қонун билан ҳимояланган ҳуқуқ."},
+    {q:"Агар иш ютқизсак нима бўлади?",a:"Ҳар қандай иш учун тўлиқ кафолат бериш мумкин эмас. Лекин биз энг кучли ҳимояни тақдим этамиз. Апелляция ва кассация имкониятлари ҳам мавжуд."},
+    {q:"Хизмат нархи қанча?",a:"Нарх иш туriga ва мураккабligiga қараб белгиланади. Дастлабки баҳолаш учун биз билан боғланинг."},
+    {q:"Бизнес учун доимий ҳуқуқий хизмат борми?",a:"Ҳа, корхоналар учун ҳуқуқий кузатув (outsourcing) хизмати мавжуд. Ой сайин белгиланган тўлов эвазига барча ҳуқуқий масалаларингиз биз томонидан ҳал этилади."},
+    {q:"Ҳужжатларимни қандай топшираман?",a:"Ҳужжатларни офисга олиб келишингиз, ёки скан/фото кўринишида Telegram орқали юборишингиз мумкин."}
+  ],
+  ru:[
+    {q:"Первичная консультация платная?",a:"Нет, первичная консультация абсолютно бесплатна. Изложите проблему — мы дадим вам ориентир."},
+    {q:"Сколько времени занимает судебный процесс?",a:"Это зависит от сложности дела. Простые гражданские дела занимают 1–3 месяца, более сложные — 6–12 месяцев и более. Мы принимаем все меры для ускорения процесса."},
+    {q:"Можно ли получить консультацию дистанционно?",a:"Да, консультация возможна через Telegram, телефон или видеозвонок. Документы можно прислать в электронном виде."},
+    {q:"Что такое адвокатская тайна?",a:"Адвокатская тайна гарантирует, что все ваши переговоры и документы хранятся конфиденциально. Это право, защищённое законом."},
+    {q:"Что если дело будет проиграно?",a:"Дать 100% гарантию невозможно ни в одном деле. Однако мы обеспечиваем максимально сильную защиту. Возможны также апелляция и кассация."},
+    {q:"Сколько стоят услуги?",a:"Стоимость зависит от типа и сложности дела. Свяжитесь с нами для предварительной оценки."},
+    {q:"Есть ли постоянное юридическое обслуживание для бизнеса?",a:"Да, для предприятий предоставляется услуга правового сопровождения (аутсорсинг). За фиксированную ежемесячную плату все правовые вопросы решаем мы."},
+    {q:"Как передать документы?",a:"Можно привезти документы в офис или отправить скан/фото через Telegram."}
+  ],
+  en:[
+    {q:"Is the initial consultation free?",a:"Yes, the initial consultation is completely free of charge. Describe your issue and we will point you in the right direction."},
+    {q:"How long does a court case take?",a:"It depends on the complexity of the case. Simple civil cases take 1–3 months; more complex ones can take 6–12 months or longer. We take all measures to expedite the process."},
+    {q:"Can I get a remote consultation?",a:"Yes, consultation is available via Telegram, phone or video call. Documents can be sent electronically."},
+    {q:"What is attorney-client privilege?",a:"Attorney-client privilege guarantees that all your communications and documents are kept confidential. This is a right protected by law."},
+    {q:"What if the case is lost?",a:"No case can be guaranteed 100%. However, we provide the strongest possible defence. Appeal and cassation options are also available."},
+    {q:"How much do services cost?",a:"The cost depends on the type and complexity of the case. Contact us for a preliminary assessment."},
+    {q:"Is there an ongoing legal service for businesses?",a:"Yes, a legal outsourcing service is available for companies. For a fixed monthly fee, all your legal matters are handled by us."},
+    {q:"How do I submit documents?",a:"You can bring documents to the office or send scans/photos via Telegram."}
+  ]
+};
+
+// SERVICE SUB-ITEMS
+const SI={
+  uz:{
+    s1:["Og'zaki huquqiy maslahat berish","Yozma huquqiy xulosa tayyorlash","Ariza va shikoyatlar loyihasini tayyorlash","Shartnomalar loyihasini tuzish","Boshqa huquqiy hujjatlar tayyorlash"],
+    s2:["Meros ishlari bo'yicha sudda vakillik","Uy-joy nizolarini hal qilish","Aliment va ajrim ishlarida vakillik","Zarar qoplash da'volarini yuritish","Tadbirkorlar o'rtasidagi nizolarda vakillik","Bankrotlik ishlarida vakillik","Ma'muriy sudlarda shikoyat qilish"],
+    s3:["Dastlabki tergovda himoya qilish","Surishtiruv bosqichida himoya qilish","Birinchi instansiyada himoya qilish","Apellyatsiya instansiyasida himoya qilish","Kassatsiya instansiyasida himoya qilish","Jabrlanuvchi tomonida manfaatlarni himoya qilish","Soroq jarayonlarida qatnashish"],
+    s4:["Huquqiy kuzatuv (Outsourcing) xizmati","Barcha biznes hujjatlarini tekshirish","Soliq tekshiruvlarida tadbirkorni himoya qilish","Prokuratura tekshiruvlarida himoya qilish","Nazorat organlari bilan ishlash","Mehnat nizolarini hal qilish"],
+    s5:["MCHJ ochish va davlat ro'yxatidan o'tkazish","Ustav va ta'sis hujjatlarini tayyorlash","Litsenziya va ruxsatnomalar olish","Korxonalarni reorganizatsiya qilish","Korxonani yopish (likvidatsiya)","Debitorlik qarzini undirish","Pretenziya yuborish va sudda undirish","Ijro bosqichida MIB bilan ishlash"],
+    s6:["Export-import shartnomalarini tekshirish","Oldi-sotdi va ijara shartnomalarini ekspertizalash","NDA (maxfiylik kelishuvi) tuzish","Lizing shartnomasini tekshirish","Mehnat shartnomasini tayyorlash","Ichki mehnat tartib qoidasini ishlab chiqish"],
+    s7:["Mulk huquqiy tozaligini tekshirish","Oldi-sotdi bitimida huquqiy yordam berish","Kadastr hujjatlaridagi muammolarni hal qilish","Yerga bo'lgan huquqni rasmiylashtirish","Noqonuniy snos uchun kompensatsiya undirish","Yer ajratish va ruxsatnoma olish"],
+    s8:["Aliment undirish bo'yicha da'vo yuritish","Ko'char va ko'chmas mulkni sud orqali bo'lish","Merosga bo'lgan huquqni tiklash","Vasiyatnomani haqiqiy emas deb topish","Tovar belgisi va brendni himoya qilish","Mualliflik huquqini himoya qilish"],
+    s9:["Davlat organlariga rasmiy so'rov yuborish","15 kun ichida javob olish huquqi","Shifoxona va arxivlardan hujjat olish","Moliyaviy ma'lumotlarni so'rash","Ekspertiza tayinlash va xulosa olish","Xususiy tashkilotlardan ma'lumot talab qilish"]
+  },
+  oz:{
+    s1:["Оғзаки ҳуқуқий маслаҳат бериш","Ёзма ҳуқуқий хулоса тайёрлаш","Ариза ва шикоятлар лойиҳасини тайёрлаш","Шартномалар лойиҳасини тузиш","Бошқа ҳуқуқий ҳужжатлар тайёрлаш"],
+    s2:["Мерос ишлари бўйича судда вакиллик","Уй-жой низоларини ҳал қилиш","Алимент ва ажрим ишларида вакиллик","Зарар қоплаш даъволарини юритиш","Тадбиркорлар ўртасидаги низоларда вакиллик","Банкротлик ишларида вакиллик","Маъмурий судларда шикоят қилиш"],
+    s3:["Дастлабки терговда ҳимоя қилиш","Суриштирув босқичида ҳимоя қилиш","Биринчи инстансияда ҳимоя қилиш","Апелляция инстансиясида ҳимоя қилиш","Кассация инстансиясида ҳимоя қилиш","Жабрланувчи томонида манфаатларни ҳимоя қилиш","Сўроқ жараёнларида қатнашиш"],
+    s4:["Ҳуқуқий кузатув (Outsourcing) хизмати","Барча бизнес ҳужжатларини текшириш","Солиқ текширувларида тадбиркорни ҳимоя қилиш","Прокуратура текширувларида ҳимоя қилиш","Назорат органлари билан ишлаш","Меҳнат низоларини ҳал қилиш"],
+    s5:["МЧҲЖ очиш ва давлат рўйхатидан ўтказиш","Устав ва таъсис ҳужжатларини тайёрлаш","Лицензия ва рухсатномалар олиш","Корхоналарни реорганизация қилиш","Корхонани ёпиш (ликвидация)","Дебиторлик қарзини ундириш","Претензия юбориш ва судда ундириш","Ижро босқичида МИБ билан ишлаш"],
+    s6:["Экспорт-импорт шартномаларини текшириш","Олди-сотди ва ижара шартномаларини экспертизалаш","NDA (махфийлик келишуви) тузиш","Лизинг шартномасини текшириш","Меҳнат шартномасини тайёрлаш","Ички меҳнат тартиб қоидасини ишлаб чиқиш"],
+    s7:["Мулк ҳуқуқий тозалигини текшириш","Олди-сотди битимида ҳуқуқий ёрдам бериш","Кадастр ҳужжатларидаги муаммоларни ҳал қилиш","Ерга бўлган ҳуқуқни расмийлаштириш","Ноқонуний снос учун компенсация ундириш","Ер ажратиш ва рухсатнома олиш"],
+    s8:["Алимент ундириш бўйича даъво юритиш","Кўчар ва кўчмас мулкни суд орқали бўлиш","Меросга бўлган ҳуқуқни тиклаш","Васиятномани ҳақиқий эмас деб топиш","Товар белгиси ва брендни ҳимоя қилиш","Муаллифлик ҳуқуқини ҳимоя қилиш"],
+    s9:["Давлат органларига расмий сўров юбориш","15 кун ичида жавоб олиш ҳуқуқи","Шифохона ва архивлардан ҳужжат олиш","Молиявий маълумотларни сўраш","Экспертиза тайинлаш ва хулоса олиш","Хусусий ташкилотлардан маълумот талаб қилиш"]
+  },
+  ru:{
+    s1:["Устная юридическая консультация","Подготовка письменного заключения","Составление заявлений и жалоб","Разработка проектов договоров","Подготовка иных правовых документов"],
+    s2:["Представительство в наследственных делах","Разрешение жилищных споров","Представительство в делах об алиментах и разводе","Ведение исков о возмещении ущерба","Представительство в спорах между предпринимателями","Представительство в делах о банкротстве","Обжалование в административных судах"],
+    s3:["Защита на стадии дознания","Защита на стадии предварительного следствия","Защита в суде первой инстанции","Защита в апелляционной инстанции","Защита в кассационной инстанции","Представление интересов потерпевшего","Участие в следственных действиях"],
+    s4:["Услуга правового сопровождения (Outsourcing)","Проверка всех документов бизнеса","Защита при налоговых проверках","Защита при проверках прокуратуры","Взаимодействие с контролирующими органами","Урегулирование трудовых споров"],
+    s5:["Открытие ООО и государственная регистрация","Подготовка устава и учредительных документов","Получение лицензий и разрешений","Реорганизация компаний","Ликвидация компании","Взыскание дебиторской задолженности","Направление претензий и взыскание в суде","Работа с МИБ на стадии исполнения"],
+    s6:["Экспертиза договоров экспорта-импорта","Экспертиза договоров купли-продажи и аренды","Составление NDA","Проверка договора лизинга","Разработка трудового договора","Разработка внутренних трудовых правил"],
+    s7:["Проверка юридической чистоты объекта","Юридическое сопровождение купли-продажи","Решение кадастровых проблем","Оформление права на землю","Взыскание компенсации за незаконный снос","Получение земельного участка и разрешений"],
+    s8:["Ведение иска о взыскании алиментов","Раздел движимого и недвижимого имущества","Восстановление права на наследство","Признание завещания недействительным","Защита товарного знака и бренда","Защита авторских прав"],
+    s9:["Направление официального запроса","Право получить ответ в течение 15 дней","Получение документов из больниц и архивов","Запрос финансовой информации","Назначение экспертизы","Запрос сведений у частных организаций"]
+  },
+  en:{
+    s1:["Oral legal consultation","Preparation of written legal opinion","Drafting applications and complaints","Drafting contracts","Preparation of other legal documents"],
+    s2:["Representation in inheritance cases","Resolution of housing disputes","Representation in alimony and divorce cases","Pursuing damages claims","Representation in business disputes","Representation in bankruptcy cases","Filing administrative court complaints"],
+    s3:["Defence during initial investigation","Defence during preliminary investigation","Defence in first-instance court","Defence in appellate court","Defence in cassation court","Representing victims' interests","Participation in investigative actions"],
+    s4:["Legal support service (Outsourcing)","Reviewing all business documents","Protection during tax inspections","Protection during prosecutor's inspections","Working with regulatory authorities","Resolving labour disputes"],
+    s5:["LLC formation and state registration","Preparing articles of association","Obtaining licences and permits","Company reorganisation","Company liquidation","Debt recovery","Filing claims and court recovery","Enforcement bureau work"],
+    s6:["Reviewing export-import contracts","Reviewing sale and lease agreements","Drafting NDA","Reviewing lease financing agreement","Preparing employment contract","Developing internal labour regulations"],
+    s7:["Legal due diligence of property","Legal support for sale transaction","Resolving cadastral problems","Formalising land rights","Recovering compensation for unlawful demolition","Obtaining land plot and permits"],
+    s8:["Pursuing alimony claim","Dividing property through court","Restoring inheritance rights","Declaring will invalid","Protecting trademark and brand","Protecting copyright"],
+    s9:["Sending official inquiry","Right to receive response within 15 days","Obtaining documents from hospitals and archives","Requesting financial information","Ordering expert examination","Requesting info from private organisations"]
+  }
+};
+
+// TRANSLATIONS
+const T={
+  uz:{nav_home:"Bosh sahifa",nav_services:"Xizmatlar",nav_process:"Jarayon",nav_testi:"Mijozlar",nav_news:"Yangiliklar",nav_contact:"Bog'lanish",nav_cta:"Bepul maslahat",
+    hero_badge:"Professional huquqiy yordam",hero_h1a:"Huquqlaringiz —",hero_h1b:"bizning mas'uliyat",
+    hero_sub:"O'zbekistonda yuqori malakali huquqiy xizmatlar. Fuqarolik, jinoyat va biznes ishlari bo'yicha tajribali advokat.",
+    hero_btn1:"Bepul maslahat →",hero_btn2:"Xizmatlarimiz",
+    stat1:"Yillik tajriba",stat2:"Muvaffaqiyatli ish",stat3:"Mijozlar mamnuniyati",
+    tr1n:"Litsenziya",tr1l:"O'zbekiston Respublikasi Advokatlar palatasi",
+    tr2l:"Yillik advokatura tajribasi",tr2d:"Fuqarolik, jinoyat, iqtisodiy ishlar",
+    tr3l:"Muvaffaqiyatli ish",tr3d:"Sudda va sudgacha hal etilgan",
+    tr4n:"Sir",tr4l:"Advokat siri kafolati",tr4d:"Qonun bilan himoyalangan maxfiylik",
+    srv_eye:"Xizmatlarimiz",srv_h2:"Barcha huquqiy masalalar",srv_sub:"O'zbekiston qonunchiligi doirasida keng qamrovli huquqiy xizmatlar.",
+    see_more:"Batafsil ko'rish",
+    s1h:"Maslahat va tushuntirishlar",s1b:"Og'zaki va yozma ravishda qonun hujjatlari bo'yicha professional tushuntirishlar.",
+    s2h:"Fuqarolik va iqtisodiy ishlarda vakillik",s2b:"Meros, uy-joy, oilaviy nizolar, zarar qoplash va iqtisodiy sudlarda vakillik.",
+    s3h:"Jinoyat ishlari bo'yicha himoya",s3b:"Dastlabki tergovdan sudgacha — har bir bosqichda to'liq huquqiy himoya.",
+    s4h:"Tadbirkorlik subyektlariga xizmat",s4b:"Biznes hujjatlarini qonunga muvofiqlashtirish va tekshiruvlarda himoya.",
+    s5h:"Korporativ va biznes huquqi",s5b:"Kompaniya tashkil qilishdan tugatishgacha — to'liq huquqiy hamrohlik.",
+    s6h:"Shartnomaviy-huquqiy ishlar",s6b:"Shartnomalarni ekspertizadan o'tkazish va lokal hujjatlarni tayyorlash.",
+    s7h:"Ko'chmas mulk va yer masalalari",s7b:"Mulk tozaligini tekshirish, yer huquqlarini rasmiylashtirish.",
+    s8h:"Oilaviy va meros ishlari",s8b:"Aliment, mol-mulk bo'linishi, meros va intellektual mulk huquqini himoya.",
+    s9h:"Maxsus vakolat: advokatlik so'rovi",s9b:"Davlat organlaridan hujjatlarni majburiy tartibda talabga ko'ra olish.",
+    proc_eye:"Ish jarayoni",proc_h2:"Qanday ishlashimiz",proc_sub:"To'rtta oddiy qadamda muammoyingizni hal etamiz.",
+    p1h:"Murojaat",p1t:"Telefon, Telegram yoki forma orqali biz bilan bog'laning. Dastlabki maslahat bepul.",
+    p2h:"Tahlil",p2t:"Ishingizni batafsil ko'rib chiqamiz, hujjatlarni o'rganamiz va huquqiy yo'l xaritasini tuzamiz.",
+    p3h:"Himoya",p3t:"Sud yoki davlat organlarida sizning manfaatingizni to'liq himoya qilamiz.",
+    p4h:"Natija",p4t:"Ishni muvaffaqiyatli yakunlaymiz va keyingi qadamlar bo'yicha maslahat beramiz.",
+    testi_eye:"Mijozlar sharhlari",testi_h2:"Ular nima deydi",testi_sub:"Real mijozlarimizning real natijalari.",
+    news_eye:"Yangiliklar",news_h2:"Qonunchilik yangiliklari",news_sub:"O'zbekiston qonunchiligi va huquqiy sohada so'nggi o'zgarishlar.",news_refresh:"Yangilash",
+    ai_eye:"AI yordamchi",ai_h2:"Namunaviy hujjat tayyorlash",ai_sub:"Vaziyatingizni tasvirlab bering — namunaviy ariza, shartnoma yoki shikoyat tuzib beradi.",
+    ai_title:"Huquqiy hujjat yordamchisi",ai_note:"Namuna — advokat tasdiqlashi tavsiya etiladi",
+    ai_type:"Hujjat turi",ai_lang:"Til",ai_desc:"Vaziyatni qisqacha tasvirlab bering",ai_btn:"✨ Hujjat yaratish",
+    d_ariza:"Ariza",d_shartnoma:"Shartnoma",d_shikoyat:"Shikoyat",d_pretenziya:"Pretenziya",d_vakola:"Vakolatnoma",
+    faq_h2:"Ko'p so'raladigan savollar",faq_sub:"Eng ko'p beriladigan savollarga javoblar.",
+    c_eye:"Bog'lanish",c_h2:"Biz bilan bog'laning",c_sub:"Bepul dastlabki maslahat olish uchun murojaat qiling",
+    c_call:"Qo'ng'iroq qiling",c_tg:"Telegram orqali yozing",c_city:"Toshkent, O'zbekiston",c_off:"Ofisga tashrif buyuring",
+    c_note:"💡 Murojaat qabul qilingandan so'ng 24 soat ichida javob beramiz. Barcha ma'lumotlar maxfiy saqlanadi.",
+    cf_title:"Xabar yuboring",cf_name:"Ismingiz",cf_phone:"Telefon raqam",cf_issue:"Muammo turi",cf_msg:"Xabar",cf_send:"Xabar yuborish →",
+    o1:"Fuqarolik ishi",o2:"Jinoyat ishi",o3:"Biznes / korporativ",o4:"Oilaviy masala",o5:"Ko'chmas mulk",o6:"Boshqa",
+    fc:"© 2025 Advokat UA. Barcha huquqlar himoyalangan."},
+  oz:{nav_home:"Бош саҳифа",nav_services:"Хизматлар",nav_process:"Жараён",nav_testi:"Мижозлар",nav_news:"Янгиликлар",nav_contact:"Боғланиш",nav_cta:"Бепул маслаҳат",
+    hero_badge:"Профессионал ҳуқуқий ёрдам",hero_h1a:"Ҳуқуқларингиз —",hero_h1b:"бизнинг масъулият",
+    hero_sub:"Ўзбекистонда юқори малакали ҳуқуқий хизматлар. Фуқаролик, жиноят ва бизнес ишлари бўйича тажрибали адвокат.",
+    hero_btn1:"Бепул маслаҳат →",hero_btn2:"Хизматларимиз",
+    stat1:"Йиллик тажриба",stat2:"Муваффақиятли иш",stat3:"Мижозлар мамнунияти",
+    tr1n:"Лицензия",tr1l:"Ўзбекистон Республикаси Адвокатлар палатаси",
+    tr2l:"Йиллик адвокатура тажрибаси",tr2d:"Фуқаролик, жиноят, иқтисодий ишлар",
+    tr3l:"Муваффақиятли иш",tr3d:"Судда ва судгача ҳал этилган",
+    tr4n:"Сир",tr4l:"Адвокат сири кафолати",tr4d:"Қонун билан ҳимояланган махфийлик",
+    srv_eye:"Хизматларимиз",srv_h2:"Барча ҳуқуқий масалалар",srv_sub:"Ўзбекистон қонунчилиги доирасида кенг қамровли ҳуқуқий хизматлар.",
+    see_more:"Батафсил кўриш",
+    s1h:"Маслаҳат ва тушунтиришлар",s1b:"Оғзаки ва ёзма равишда қонун ҳужжатлари бўйича профессионал тушунтиришлар.",
+    s2h:"Фуқаролик ва иқтисодий ишларда вакиллик",s2b:"Мерос, уй-жой, оилавий низолар, зарар қоплаш ва иқтисодий судларда вакиллик.",
+    s3h:"Жиноят ишлари бўйича ҳимоя",s3b:"Дастлабки терговдан судгача — ҳар бир босқичда тўлиқ ҳуқуқий ҳимоя.",
+    s4h:"Тадбиркорлик субъектларига хизмат",s4b:"Бизнес ҳужжатларини қонунга мувофиқлаштириш ва текширувларда ҳимоя.",
+    s5h:"Корпоратив ва бизнес ҳуқуқи",s5b:"Компания ташкил қилишдан тугатишгача — тўлиқ ҳуқуқий ҳамроҳлик.",
+    s6h:"Шартномавий-ҳуқуқий ишлар",s6b:"Шартномаларни экспертизадан ўтказиш ва локал ҳужжатларни тайёрлаш.",
+    s7h:"Кўчмас мулк ва ер масалалари",s7b:"Мулк тозалигини текшириш, ер ҳуқуқларини расмийлаштириш.",
+    s8h:"Оилавий ва мерос ишлари",s8b:"Алимент, мол-мулк бўлиниши, мерос ва интеллектуал мулк ҳуқуқини ҳимоя.",
+    s9h:"Махсус ваколат: адвокатлик сўрови",s9b:"Давлат органларидан ҳужжатларни мажбурий тартибда талабга кўра олиш.",
+    proc_eye:"Иш жараёни",proc_h2:"Қандай ишлашимиз",proc_sub:"Тўртта оддий қадамда муаммойингизни ҳал этамиз.",
+    p1h:"Мурожаат",p1t:"Телефон, Telegram ёки форма орқали биз билан боғланинг. Дастлабки маслаҳат бепул.",
+    p2h:"Таҳлил",p2t:"Ишингизни батафсил кўриб чиқамиз, ҳужжатларни ўрганамиз ва ҳуқуқий йўл харитасини тузамиз.",
+    p3h:"Ҳимоя",p3t:"Суд ёки давлат органларида сизнинг манфаатингизни тўлиқ ҳимоя қиламиз.",
+    p4h:"Натижа",p4t:"Ишни муваффақиятли якунлаймиз ва кейинги қадамлар бўйича маслаҳат берамиз.",
+    testi_eye:"Мижозлар шарҳлари",testi_h2:"Улар нима дейди",testi_sub:"Реал мижозларимизнинг реал натижалари.",
+    news_eye:"Янгиликлар",news_h2:"Қонунчилик янгиликлари",news_sub:"Ўзбекистон қонунчилиги ва ҳуқуқий соҳада сўнгги ўзгаришлар.",news_refresh:"Янгилаш",
+    ai_eye:"AI ёрдамчи",ai_h2:"Намунавий ҳужжат тайёрлаш",ai_sub:"Вазиятингизни тасвирлаб беринг — намунавий ариза, шартнома ёки шикоят тузиб беради.",
+    ai_title:"Ҳуқуқий ҳужжат ёрдамчиси",ai_note:"Намуна — адвокат тасдиқлаши тавсия этилади",
+    ai_type:"Ҳужжат тури",ai_lang:"Тил",ai_desc:"Вазиятни қисқача тасвирлаб беринг",ai_btn:"✨ Ҳужжат яратиш",
+    d_ariza:"Ариза",d_shartnoma:"Шартнома",d_shikoyat:"Шикоят",d_pretenziya:"Претензия",d_vakola:"Ваколатнома",
+    faq_h2:"Кўп сўраладиган саволлар",faq_sub:"Энг кўп бериладиган саволларга жавоблар.",
+    c_eye:"Боғланиш",c_h2:"Биз билан боғланинг",c_sub:"Бепул дастлабки маслаҳат олиш учун мурожаат қилинг",
+    c_call:"Қўнғироқ қилинг",c_tg:"Telegram орқали ёзинг",c_city:"Тошкент, Ўзбекистон",c_off:"Офисга ташриф буюринг",
+    c_note:"💡 Мурожаат қабул қилингандан сўнг 24 соат ичида жавоб берамиз. Барча маълумотлар махфий сақланади.",
+    cf_title:"Хабар юборинг",cf_name:"Исмингиз",cf_phone:"Телефон рақам",cf_issue:"Муаммо тури",cf_msg:"Хабар",cf_send:"Хабар юбориш →",
+    o1:"Фуқаролик иши",o2:"Жиноят иши",o3:"Бизнес / корпоратив",o4:"Оилавий масала",o5:"Кўчмас мулк",o6:"Бошқа",
+    fc:"© 2025 Адвокат UA. Барча ҳуқуқлар ҳимояланган."},
+  ru:{nav_home:"Главная",nav_services:"Услуги",nav_process:"Процесс",nav_testi:"Клиенты",nav_news:"Новости",nav_contact:"Контакты",nav_cta:"Бесплатная консультация",
+    hero_badge:"Профессиональная юридическая помощь",hero_h1a:"Ваши права —",hero_h1b:"наша ответственность",
+    hero_sub:"Квалифицированные юридические услуги в Узбекистане. Защитите свои права с опытным адвокатом.",
+    hero_btn1:"Бесплатная консультация →",hero_btn2:"Наши услуги",
+    stat1:"Лет опыта",stat2:"Успешных дел",stat3:"Довольных клиентов",
+    tr1n:"Лицензия",tr1l:"Адвокатская палата Республики Узбекистан",
+    tr2l:"Лет адвокатской практики",tr2d:"Гражданские, уголовные, экономические дела",
+    tr3l:"Успешных дел",tr3d:"Решено в суде и до суда",
+    tr4n:"Тайна",tr4l:"Гарантия адвокатской тайны",tr4d:"Конфиденциальность, защищённая законом",
+    srv_eye:"Наши услуги",srv_h2:"По всем правовым вопросам",srv_sub:"Команда Advokat UA оказывает широкий спектр юридических услуг.",
+    see_more:"Подробнее",
+    s1h:"Консультации и разъяснения",s1b:"Профессиональные разъяснения по законодательству в устной и письменной форме.",
+    s2h:"Представительство в гражданских и экономических делах",s2b:"Наследство, жильё, семейные споры, возмещение ущерба и представительство в судах.",
+    s3h:"Защита по уголовным делам",s3b:"От первоначального расследования до суда — полная юридическая защита.",
+    s4h:"Юридическое обслуживание бизнеса",s4b:"Приведение документов в соответствие с законом и защита при проверках.",
+    s5h:"Корпоративное и бизнес-право",s5b:"От основания компании до ликвидации — полное юридическое сопровождение.",
+    s6h:"Договорно-правовая работа",s6b:"Экспертиза договоров и разработка локальных нормативных актов.",
+    s7h:"Недвижимость и земельные вопросы",s7b:"Юридическая проверка объектов, оформление прав на землю.",
+    s8h:"Семейные и наследственные дела",s8b:"Алименты, раздел имущества, наследство и защита интеллектуальной собственности.",
+    s9h:"Специальный инструмент: адвокатский запрос",s9b:"Получение документов от государственных органов в обязательном порядке.",
+    proc_eye:"Рабочий процесс",proc_h2:"Как мы работаем",proc_sub:"Решаем вашу проблему в четыре простых шага.",
+    p1h:"Обращение",p1t:"Свяжитесь с нами по телефону, Telegram или через форму. Первичная консультация бесплатна.",
+    p2h:"Анализ",p2t:"Детально изучаем ваше дело, документы и составляем правовую дорожную карту.",
+    p3h:"Защита",p3t:"Полностью защищаем ваши интересы в суде или государственных органах.",
+    p4h:"Результат",p4t:"Успешно завершаем дело и даём рекомендации по дальнейшим шагам.",
+    testi_eye:"Отзывы клиентов",testi_h2:"Что говорят клиенты",testi_sub:"Реальные результаты реальных клиентов.",
+    news_eye:"Новости",news_h2:"Правовые новости",news_sub:"Последние изменения в законодательстве Узбекистана.",news_refresh:"Обновить",
+    ai_eye:"ИИ-помощник",ai_h2:"Подготовка образца документа",ai_sub:"Опишите ситуацию — составит образец заявления, договора или жалобы.",
+    ai_title:"Помощник по юридическим документам",ai_note:"Только образец — рекомендуется проверка адвоката",
+    ai_type:"Тип документа",ai_lang:"Язык",ai_desc:"Кратко опишите ситуацию",ai_btn:"✨ Создать документ",
+    d_ariza:"Заявление",d_shartnoma:"Договор",d_shikoyat:"Жалоба",d_pretenziya:"Претензия",d_vakola:"Доверенность",
+    faq_h2:"Часто задаваемые вопросы",faq_sub:"Ответы на наиболее популярные вопросы.",
+    c_eye:"Контакты",c_h2:"Свяжитесь с нами",c_sub:"Обратитесь за бесплатной первичной консультацией",
+    c_call:"Позвоните нам",c_tg:"Напишите в Telegram",c_city:"Ташкент, Узбекистан",c_off:"Посетите наш офис",
+    c_note:"💡 После получения запроса ответим в течение 24 часов. Все данные хранятся конфиденциально.",
+    cf_title:"Отправьте сообщение",cf_name:"Ваше имя",cf_phone:"Номер телефона",cf_issue:"Тип проблемы",cf_msg:"Сообщение",cf_send:"Отправить →",
+    o1:"Гражданское дело",o2:"Уголовное дело",o3:"Бизнес / корпоратив",o4:"Семейный вопрос",o5:"Недвижимость",o6:"Другое",
+    fc:"© 2025 Advokat UA. Все права защищены."},
+  en:{nav_home:"Home",nav_services:"Services",nav_process:"Process",nav_testi:"Clients",nav_news:"News",nav_contact:"Contact",nav_cta:"Free consultation",
+    hero_badge:"Professional legal services",hero_h1a:"Your rights —",hero_h1b:"our responsibility",
+    hero_sub:"Top-tier legal services in Uzbekistan. Protect your interests with an experienced attorney.",
+    hero_btn1:"Free consultation →",hero_btn2:"Our services",
+    stat1:"Years of experience",stat2:"Successful cases",stat3:"Client satisfaction",
+    tr1n:"Licensed",tr1l:"Bar Association of the Republic of Uzbekistan",
+    tr2l:"Years of legal practice",tr2d:"Civil, criminal, economic matters",
+    tr3l:"Successful cases",tr3d:"Resolved in court and pre-court",
+    tr4n:"Privilege",tr4l:"Attorney-client privilege guaranteed",tr4d:"Confidentiality protected by law",
+    srv_eye:"Our services",srv_h2:"Full-spectrum legal coverage",srv_sub:"Advokat UA provides comprehensive legal services within Uzbekistan's legislation.",
+    see_more:"Learn more",
+    s1h:"Legal advice & explanations",s1b:"Professional oral and written explanations of legislation and document drafting.",
+    s2h:"Civil & economic representation",s2b:"Inheritance, housing, family disputes, damages, and court representation.",
+    s3h:"Criminal defence",s3b:"From initial investigation to court — full legal protection at every stage.",
+    s4h:"Business legal services",s4b:"Compliance of business documents and protection during regulatory inspections.",
+    s5h:"Corporate & business law",s5b:"From company formation to liquidation — complete legal accompaniment.",
+    s6h:"Contract & legal work",s6b:"Contract review for risks and drafting of local regulatory documents.",
+    s7h:"Real estate & land issues",s7b:"Legal due diligence and land rights formalisation.",
+    s8h:"Family & inheritance matters",s8b:"Alimony, property division, inheritance rights and IP protection.",
+    s9h:"Special power: attorney's inquiry",s9b:"Obtaining documents from state bodies — response mandatory within 15 days.",
+    proc_eye:"Our process",proc_h2:"How we work",proc_sub:"We resolve your issue in four simple steps.",
+    p1h:"Contact",p1t:"Reach us by phone, Telegram or form. Initial consultation is free.",
+    p2h:"Analysis",p2t:"We examine your case in detail, study documents and build a legal roadmap.",
+    p3h:"Defence",p3t:"We fully protect your interests in court or before state bodies.",
+    p4h:"Result",p4t:"We successfully close the case and advise on next steps.",
+    testi_eye:"Client reviews",testi_h2:"What clients say",testi_sub:"Real results from real clients.",
+    news_eye:"News",news_h2:"Legal news",news_sub:"Latest developments in Uzbekistan's legislation.",news_refresh:"Refresh",
+    ai_eye:"AI assistant",ai_h2:"Draft a legal document",ai_sub:"Describe your situation — get a sample application, contract or complaint.",
+    ai_title:"Legal document assistant",ai_note:"Sample only — attorney review recommended",
+    ai_type:"Document type",ai_lang:"Language",ai_desc:"Briefly describe your situation",ai_btn:"✨ Generate document",
+    d_ariza:"Application",d_shartnoma:"Contract",d_shikoyat:"Complaint",d_pretenziya:"Demand letter",d_vakola:"Power of attorney",
+    faq_h2:"Frequently asked questions",faq_sub:"Answers to the most common questions.",
+    c_eye:"Contact",c_h2:"Get in touch",c_sub:"Contact us for a free initial consultation",
+    c_call:"Call us",c_tg:"Write on Telegram",c_city:"Tashkent, Uzbekistan",c_off:"Visit our office",
+    c_note:"💡 We respond within 24 hours of receiving your request. All information is strictly confidential.",
+    cf_title:"Send a message",cf_name:"Your name",cf_phone:"Phone number",cf_issue:"Issue type",cf_msg:"Message",cf_send:"Send message →",
+    o1:"Civil case",o2:"Criminal case",o3:"Business / corporate",o4:"Family matter",o5:"Real estate",o6:"Other",
+    fc:"© 2025 Advokat UA. All rights reserved."}
+};
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let lang = 'uz';
+let testiIdx = 0, testiTimer;
+let newsIdx = 0, newsTimer;
+let newsItems = [];
+const rlMap = {ai:[]};
+
+// ══════════════════════════════════════════════
+// LANG
+// ══════════════════════════════════════════════
+function setLang(l){
+  lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n;
+    if(T[l][k] !== undefined) el.textContent = T[l][k];
+  });
+  document.querySelectorAll('.lp').forEach(btn=>{
+    const map={uz:'UZ',oz:'ЎЗ',en:'EN',ru:'RU'};
+    btn.classList.toggle('on', btn.textContent === map[l]);
+  });
+  // rebuild open service subs
+  document.querySelectorAll('.srv-card.open .srv-sub').forEach(ul=>{
+    buildSub(ul, ul.dataset.key, l);
+  });
+  // rebuild testimonials
+  buildTestis();
+  // rebuild faq
+  buildFaq();
+  // reload news
+  loadNews();
+}
+
+// ══════════════════════════════════════════════
+// THEME
+// ══════════════════════════════════════════════
+function toggleTheme(){
+  const d = document.documentElement;
+  const light = d.getAttribute('data-theme') === 'light';
+  d.setAttribute('data-theme', light ? 'dark' : 'light');
+  document.getElementById('themeBtn').textContent = light ? '🌙' : '☀️';
+}
+
+// ══════════════════════════════════════════════
+// DRAWER
+// ══════════════════════════════════════════════
+function openDrawer(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('mOverlay').classList.add('show');
+  document.getElementById('hamburger').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('mOverlay').classList.remove('show');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ══════════════════════════════════════════════
+// SCROLL
+// ══════════════════════════════════════════════
+const navEl = document.getElementById('mainNav');
+const progressEl = document.getElementById('navProgress');
+const sections = document.querySelectorAll('section[id]');
+const navLinkEls = document.querySelectorAll('.nav-links a');
+
+function onScroll(){
+  const y = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  navEl.classList.toggle('scrolled', y > 60);
+  progressEl.style.transform = `scaleX(${total > 0 ? y/total : 0})`;
+  let current = 'home';
+  sections.forEach(s=>{ if(y >= s.offsetTop - 100) current = s.id; });
+  navLinkEls.forEach(a=>{
+    const href = a.getAttribute('href').replace('#','');
+    a.classList.toggle('active', href === current);
+  });
+  document.getElementById('bkTop').classList.toggle('show', y > 400);
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+
+// Reveal on scroll
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.08});
+function observeAll(){ document.querySelectorAll('.reveal').forEach(el=>io.observe(el)); }
+observeAll();
+
+// ══════════════════════════════════════════════
+// SERVICES
+// ══════════════════════════════════════════════
+function buildSub(ul, key, l){
+  const items = (SI[l]||SI.uz)[key]||[];
+  ul.innerHTML = `<div class="srv-sub-inner">${items.map((t,i)=>`<li><i class="srv-sub-icon">${i+1}</i>${t}</li>`).join('')}</div>`;
+}
+function toggleSrv(card){
+  const ul = card.querySelector('.srv-sub');
+  const wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.srv-card.open').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen){
+    card.classList.add('open');
+    buildSub(ul, ul.dataset.key, lang);
+  }
+}
+
+// ══════════════════════════════════════════════
+// TESTIMONIALS carousel
+// ══════════════════════════════════════════════
+function buildTestis(){
+  const data = TESTIS[lang]||TESTIS.uz;
+  const track = document.getElementById('testiTrack');
+  const dots = document.getElementById('testiDots');
+  track.innerHTML = data.map(t=>`
+    <div class="testi-card">
+      <div class="testi-stars">${t.stars}</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">${t.text}</p>
+      <div class="testi-author">
+        <div class="testi-avatar">${t.avatar}</div>
+        <div><div class="testi-name">${t.name}</div><div class="testi-role">${t.role}</div></div>
+      </div>
+    </div>`).join('');
+  dots.innerHTML = data.map((_,i)=>`<div class="testi-dot${i===0?' on':''}" onclick="testiGo(${i})"></div>`).join('');
+  testiIdx = 0;
+  testiApply();
+  clearInterval(testiTimer);
+  testiTimer = setInterval(()=>testiMove(1), 4000);
+}
+function testiApply(){
+  const data = TESTIS[lang]||TESTIS.uz;
+  const track = document.getElementById('testiTrack');
+  const cards = track.querySelectorAll('.testi-card');
+  const visible = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  const max = Math.max(0, data.length - visible);
+  testiIdx = Math.min(Math.max(0, testiIdx), max);
+  const cardW = cards[0] ? cards[0].offsetWidth + 24 : 0;
+  track.style.transform = `translateX(-${testiIdx * cardW}px)`;
+  document.querySelectorAll('.testi-dot').forEach((d,i)=>d.classList.toggle('on', i===testiIdx));
+}
+function testiMove(dir){
+  const data = TESTIS[lang]||TESTIS.uz;
+  const visible = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  testiIdx = (testiIdx + dir + data.length - visible + 1) % (data.length - visible + 1);
+  testiApply();
+}
+function testiGo(i){ testiIdx = i; testiApply(); }
+
+// ══════════════════════════════════════════════
+// NEWS carousel
+// ══════════════════════════════════════════════
+const newsLangMap={uz:"O'zbek tilida (lotin) javob ber",oz:"Ўзбек тилида (кирилл) жавоб бер",ru:"Отвечай на русском языке",en:"Answer in English"};
+const newsCats={uz:"Qonunchilik, Soliq, Mehnat, Biznes, Oila, Jinoyat",oz:"Қонунчилик, Солиқ, Меҳнат, Бизнес, Оила, Жиноят",ru:"Законодательство, Налоги, Трудовое, Бизнес, Семья, Уголовное",en:"Legislation, Tax, Labour, Business, Family, Criminal"};
+const newsCache = {};
+
+function sanitize(str){ return String(str).replace(/[<>&"']/g,''); }
+function rateOk(key,max,ms){
+  const now=Date.now(); rlMap[key]=(rlMap[key]||[]).filter(t=>now-t<ms);
+  if(rlMap[key].length>=max) return false;
+  rlMap[key].push(now); return true;
+}
+
+async function loadNews(){
+  const track = document.getElementById('newsTrack');
+  const btn = document.getElementById('newsRefresh');
+  btn.classList.add('spinning');
+  track.innerHTML = `<div class="news-skeleton"></div><div class="news-skeleton"></div><div class="news-skeleton"></div>`;
+
+  // use cache if fresh (30 min)
+  const ckey = `news_${lang}`;
+  if(newsCache[ckey] && Date.now()-newsCache[ckey].ts < 30*60*1000){
+    renderNews(newsCache[ckey].data); btn.classList.remove('spinning'); return;
+  }
+
+  try{
+    const res = await fetch(`/api/news?lang=${lang}`).catch(()=>null);
+    if(res && res.ok){
+      const data = await res.json();
+      newsCache[ckey] = {data, ts:Date.now()};
+      renderNews(data);
+    } else {
+      // fallback: call AI directly (dev mode)
+      const msg = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1400,system:'Faqat sof JSON qaytaring.',messages:[{role:'user',content:`${newsLangMap[lang]}. O'zbekiston qonunchiligi va huquqiy sohada so'nggi yangiliklar haqida 6 ta qisqa yangilik. Format: [{"title":"...","desc":"...","cat":"...","date":"..."}]. Cat: ${newsCats[lang]}`}]})}).catch(()=>null);
+      if(msg && msg.ok){
+        const d = await msg.json();
+        let raw = d.content?.map(b=>b.text||'').join('')||'[]';
+        raw = raw.replace(/```json|```/g,'').trim();
+        const items = JSON.parse(raw);
+        newsCache[ckey] = {data:items, ts:Date.now()};
+        renderNews(items);
+      } else throw new Error('both failed');
+    }
+  } catch{
+    track.innerHTML = `<div class="news-skeleton" style="display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem">⚠️ Yangiliklar yuklanmadi</div>`;
+  }
+  btn.classList.remove('spinning');
+}
+
+function renderNews(items){
+  newsItems = items;
+  newsIdx = 0;
+  const track = document.getElementById('newsTrack');
+  const dots = document.getElementById('newsDots');
+  track.innerHTML = items.map(n=>`
+    <div class="news-card">
+      <div class="news-cat">${sanitize(n.cat||'')}</div>
+      <h4>${sanitize(n.title||'')}</h4>
+      <p>${sanitize(n.desc||'')}</p>
+      <div class="news-date">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        ${sanitize(n.date||'')}
+      </div>
+    </div>`).join('');
+  dots.innerHTML = items.map((_,i)=>`<div class="news-dot${i===0?' on':''}" onclick="newsGo(${i})"></div>`).join('');
+  newsApply();
+  clearInterval(newsTimer);
+  newsTimer = setInterval(()=>newsMove(1), 4000);
+  observeAll();
+}
+function newsApply(){
+  const track = document.getElementById('newsTrack');
+  const cards = track.querySelectorAll('.news-card');
+  if(!cards.length) return;
+  const visible = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  const max = Math.max(0, newsItems.length - visible);
+  newsIdx = Math.min(Math.max(0, newsIdx), max);
+  const cardW = cards[0].offsetWidth + 20;
+  track.style.transform = `translateX(-${newsIdx * cardW}px)`;
+  document.querySelectorAll('.news-dot').forEach((d,i)=>d.classList.toggle('on', i===newsIdx));
+}
+function newsMove(dir){
+  const visible = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  const max = Math.max(0, newsItems.length - visible);
+  newsIdx = (newsIdx + dir + max + 1) % (max + 1);
+  newsApply();
+}
+function newsGo(i){ newsIdx = i; newsApply(); }
+window.addEventListener('resize', ()=>{ testiApply(); newsApply(); });
+
+// ══════════════════════════════════════════════
+// FAQ
+// ══════════════════════════════════════════════
+function buildFaq(){
+  const data = FAQS[lang]||FAQS.uz;
+  const list = document.getElementById('faqList');
+  list.innerHTML = data.map((f,i)=>`
+    <div class="faq-item" id="faq${i}">
+      <div class="faq-q" onclick="toggleFaq(${i})">
+        <span>${f.q}</span>
+        <div class="faq-arrow">↓</div>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>
+    </div>`).join('');
+}
+function toggleFaq(i){
+  const item = document.getElementById('faq'+i);
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+// ══════════════════════════════════════════════
+// AI DOC
+// ══════════════════════════════════════════════
+async function generateDoc(){
+  const type = document.getElementById('docType').value;
+  const lng = document.getElementById('docLang').value;
+  const rawDesc = document.getElementById('docDesc').value.trim();
+  const out = document.getElementById('aiOut');
+  const btn = document.getElementById('genBtn');
+  if(!rawDesc){out.className='ai-out show';out.textContent='⚠️ Iltimos, vaziyatni tasvirlab bering.';return}
+  if(rawDesc.length>1500){out.className='ai-out show';out.textContent='⚠️ Matn 1500 belgidan oshmasligi kerak.';return}
+  if(!rateOk('ai',4,60000)){out.className='ai-out show';out.textContent='⏳ Bir daqiqada 4 tadan ko\'p so\'rov yuborib bo\'lmaydi.';return}
+  btn.disabled=true; btn.textContent='⏳ Tayyorlanmoqda...';
+  out.className='ai-out show';
+  out.innerHTML='<div class="ai-loading">✨ AI ishlamoqda<span class="dots"></span></div>';
+  const lmap={uzbek_latin:"O'zbek tilida (lotin)",uzbek_cyrillic:'Ўзбек тилида (кирилл)',russian:'русском языке',english:'English'};
+  const tmap={ariza:"ariza",shartnoma:"shartnoma",shikoyat:"shikoyat",pretenziya:"pretenziya",vakola:"vakolatnoma"};
+  try{
+    // Try backend first
+    let text = null;
+    const beRes = await fetch('/api/document',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:tmap[type],lang:lmap[lng],desc:rawDesc.slice(0,1500)})}).catch(()=>null);
+    if(beRes && beRes.ok){ const d=await beRes.json(); text=d.text; }
+    else {
+      // fallback direct
+      const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:`Siz tajribali O'zbek advokati. Faqat hujjat matnini bering, rasmiy uslubda, bo'sh maydonlarni [___] bilan belgilang.`,messages:[{role:'user',content:`${tmap[type]} hujjatini ${lmap[lng]} yozing:\n\nVaziyat: ${rawDesc.slice(0,1500)}`}]})});
+      const d=await r.json(); text=d.content?.map(b=>b.text||'').join('')||'';
+    }
+    const pre = document.createElement('div');
+    pre.style.cssText='color:var(--text);white-space:pre-wrap;font-size:.875rem;line-height:1.75';
+    pre.textContent = text||'Xatolik.';
+    const note = document.createElement('div');
+    note.style.cssText='margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.75rem;color:var(--muted)';
+    note.innerHTML='⚠️ Bu faqat namuna. Tasdiqlash uchun: <a href="tel:+998935719781" style="color:var(--accent)">+998 93 571 97 81</a> | <a href="https://t.me/Advokatcolonel" style="color:var(--accent)">@Advokatcolonel</a>';
+    out.innerHTML=''; out.appendChild(pre); out.appendChild(note);
+  } catch{ out.textContent='❌ Xatolik yuz berdi. Qayta urinib ko\'ring.'; }
+  btn.disabled=false; btn.textContent='✨ Hujjat yaratish';
+}
+
+// ══════════════════════════════════════════════
+// CONTACT FORM
+// ══════════════════════════════════════════════
+function sendContact(){
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const issue = document.getElementById('cIssue').value;
+  const msg = document.getElementById('cMsg').value.trim();
+  const st = document.getElementById('fMsg');
+  if(!name||!phone){st.className='form-msg err';st.textContent='Iltimos, ism va telefon raqamni to\'ldiring.';return}
+  const text = encodeURIComponent(`🔹 Yangi so'rov — Advokat UA\n👤 ${name}\n📱 ${phone}\n⚖️ ${issue}\n📝 ${msg}`);
+  window.open(`https://t.me/Advokatcolonel?text=${text}`,'_blank');
+  st.className='form-msg ok'; st.textContent='✅ Telegram orqali yuborilmoqda. Tez orada javob beramiz!';
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+setLang('uz');
+onScroll();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"Advokat UA","description":"Professional huquqiy yordam O'zbekistonda. Юридическая помощь в Узбекистане.","telephone":"+998935719781","address":{"@type":"PostalAddress","addressLocality":"Toshkent","addressCountry":"UZ"},"areaServed":"UZ","sameAs":["https://t.me/Advokatcolonel"],"openingHours":"Mo-Sa 09:00-18:00"}
+</script>
+</body>
+</html>
