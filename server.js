@@ -1,158 +1,173 @@
-/**
- * AdvokatUA — Secure Backend Server
- * Node.js + Express
- * 
- * Himoya:
- *  ✅ API kaliti .env da yashiringan (hech qachon frontendga chiqmaydi)
- *  ✅ Helmet — HTTP security headers
- *  ✅ CORS — faqat o'z domeningizdan so'rovlar
- *  ✅ Rate limiting — IP bo'yicha cheklash
- *  ✅ Input validation & sanitization
- *  ✅ Request size limit
- *  ✅ Error leak oldini olish
- *  ✅ News caching — 30 daqiqa (API chaqiruvlarni kamaytiradi)
- */
-
 'use strict';
 
-const express    = require('express');
-const helmet     = require('helmet');
-const cors       = require('cors');
-const rateLimit  = require('express-rate-limit');
-const path       = require('path');
-const Anthropic  = require('@anthropic-ai/sdk');
+const express   = require('express');
+const helmet    = require('helmet');
+const cors      = require('cors');
+const rateLimit = require('express-rate-limit');
+const path      = require('path');
 require('dotenv').config();
 
-// ── Validate required env vars ──────────────────────────────────────────────
-const REQUIRED_ENV = ['ANTHROPIC_API_KEY'];
-REQUIRED_ENV.forEach(k => {
-  if (!process.env[k]) {
-    console.error(`❌ Missing environment variable: ${k}`);
-    process.exit(1);
+// ── API key tekshiruvi ────────────────────────────────────────────────────────
+if (!process.env.GROQ_API_KEY) {
+  console.error('❌ GROQ_API_KEY topilmadi!');
+  console.error('Render → Environment → GROQ_API_KEY qo\'shing');
+  process.exit(1);
+}
+
+const app  = express();
+const PORT = process.env.PORT || 3000;
+const PROD = process.env.NODE_ENV === 'production';
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+
+// ── Groq API chaqiruvi ────────────────────────────────────────────────────────
+async function groqChat(systemPrompt, userPrompt, maxTokens = 1200) {
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${GROQ_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'llama-3.3-70b-versatile',
+      max_tokens: maxTokens,
+      temperature: 0.7,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user',   content: userPrompt   },
+      ],
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw Object.assign(new Error(err.error?.message || 'Groq API xatosi'), { status: res.status });
   }
-});
 
-const app    = express();
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-const PORT   = process.env.PORT || 3000;
-const PROD   = process.env.NODE_ENV === 'production';
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content || '';
+}
 
-// ── Security Headers (Helmet) ────────────────────────────────────────────────
+// ── Helmet CSP ────────────────────────────────────────────────────────────────
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc:  ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      scriptSrc:  ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
       styleSrc:   ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-      fontSrc:    ["'self'", "https://fonts.gstatic.com"],
-      imgSrc:     ["'self'", "data:", "https:"],
-      connectSrc: ["'self'"],
+      fontSrc:    ["'self'", "https://fonts.gstatic.com", "data:"],
+      imgSrc:     ["'self'", "data:", "https:", "blob:"],
+      connectSrc: ["'self'", "https://api.groq.com", "https://*.onrender.com"],
       frameSrc:   ["'none'"],
       objectSrc:  ["'none'"],
     },
   },
   crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: "cross-origin" },
 }));
 
-// ── CORS — faqat o'z saytingizdan ────────────────────────────────────────────
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',');
+// ── CORS ──────────────────────────────────────────────────────────────────────
+const rawOrigins = process.env.ALLOWED_ORIGINS || '';
+const allowedOrigins = [
+  'http://localhost:3000',
+  ...rawOrigins.split(',').map(o => o.trim()).filter(Boolean),
+];
+
 app.use(cors({
   origin(origin, cb) {
-    // Allow same-origin requests (no origin header) and allowed list
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error('CORS: not allowed'));
+    if (!origin) return cb(null, true);
+    if (origin.endsWith('.onrender.com')) return cb(null, true);
+    if (allowedOrigins.includes(origin)) return cb(null, true);
+    cb(new Error('CORS: ruxsat yo\'q'));
   },
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }));
 
-// ── Body parsing — max 20kb ──────────────────────────────────────────────────
+// ── Body parsing ──────────────────────────────────────────────────────────────
 app.use(express.json({ limit: '20kb' }));
 app.use(express.urlencoded({ extended: false, limit: '20kb' }));
 
-// ── Global rate limiter: 100 req / 15 min per IP ─────────────────────────────
+// ── Rate limiters ─────────────────────────────────────────────────────────────
 app.use(rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 150,
   standardHeaders: true,
   legacyHeaders: false,
+  trustProxy: true,
   message: { error: 'Juda ko\'p so\'rov. 15 daqiqadan so\'ng qayta urinib ko\'ring.' },
 }));
 
-// ── AI endpoints rate limiter: 10 req / 5 min per IP ─────────────────────────
 const aiLimiter = rateLimit({
   windowMs: 5 * 60 * 1000,
-  max: 10,
+  max: 20,
+  trustProxy: true,
   message: { error: 'AI limitiga yetdingiz. 5 daqiqadan so\'ng qayta urinib ko\'ring.' },
 });
 
-// ── Sanitize string input ─────────────────────────────────────────────────────
+// ── Input sanitizer ───────────────────────────────────────────────────────────
 function sanitize(str, maxLen = 2000) {
   if (typeof str !== 'string') return '';
   return str.trim().slice(0, maxLen)
-    .replace(/[<>]/g, '') // strip angle brackets
-    .replace(/javascript:/gi, '') // strip js: proto
-    .replace(/on\w+\s*=/gi, ''); // strip event handlers
+    .replace(/[<>]/g, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+\s*=/gi, '');
 }
 
-// ── Simple in-memory news cache (30 min) ────────────────────────────────────
+// ── News cache (30 daqiqa) ────────────────────────────────────────────────────
 const newsCache = new Map();
 const CACHE_TTL = 30 * 60 * 1000;
 
-// ── Static files ─────────────────────────────────────────────────────────────
+// ── Static fayllar ────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'public'), {
   etag: true,
   lastModified: true,
-  maxAge: PROD ? '1d' : 0,
+  maxAge: PROD ? '1h' : 0,
 }));
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// API: POST /api/document — hujjat yaratish
-// ═══════════════════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════════════════
+// POST /api/document — Hujjat yaratish
+// ════════════════════════════════════════════════════════════════════════════════
 app.post('/api/document', aiLimiter, async (req, res) => {
   try {
     const { type, lang, desc } = req.body;
 
-    // Validation
-    if (!desc || typeof desc !== 'string') {
-      return res.status(400).json({ error: 'desc maydoni talab qilinadi.' });
+    if (!desc || typeof desc !== 'string' || desc.trim().length < 10) {
+      return res.status(400).json({ error: 'Vaziyatni to\'liqroq tasvirlab bering.' });
     }
+
     const cleanDesc = sanitize(desc, 1500);
-    const cleanType = sanitize(type, 100);
-    const cleanLang = sanitize(lang, 100);
+    const cleanType = sanitize(type || 'ariza', 100);
+    const cleanLang = sanitize(lang || "O'zbek tilida", 100);
 
-    if (cleanDesc.length < 10) {
-      return res.status(400).json({ error: 'Tavsif juda qisqa.' });
-    }
+    const text = await groqChat(
+      `Siz tajribali O'zbek advokati va huquqshunossiz. Huquqiy hujjatlar uchun namuna matnlar tayyorlaysiz. Faqat hujjat matnini bering, rasmiy uslubda. Bo'sh maydonlarni [___] bilan belgilang. HTML teglari ishlatmang.`,
+      `${cleanType} hujjatini ${cleanLang} yozing:\n\nVaziyat: ${cleanDesc}`,
+      1200
+    );
 
-    const message = await client.messages.create({
-      model:      'claude-sonnet-4-20250514',
-      max_tokens: 1200,
-      system:     `Siz tajribali O'zbek advokati va huquqshunossiz. Huquqiy hujjatlar uchun namuna matnlar tayyorlaysiz. Faqat hujjat matnini bering, rasmiy uslubda, bo'sh maydonlarni [___] bilan belgilang. HTML teglari ishlatmang.`,
-      messages: [{
-        role:    'user',
-        content: `${cleanType} hujjatini ${cleanLang} yozing:\n\nVaziyat: ${cleanDesc}`,
-      }],
-    });
-
-    const text = message.content?.map(b => b.type === 'text' ? b.text : '').join('') || '';
     res.json({ text });
 
   } catch (err) {
-    console.error('[/api/document]', err.message);
-    // Don't leak internal errors to client
+    console.error('[/api/document] xato:', err.status, err.message);
+    if (err.status === 401) {
+      return res.status(500).json({ error: 'Groq API kaliti noto\'g\'ri. Render → Environment ni tekshiring.' });
+    }
+    if (err.status === 429) {
+      return res.status(429).json({ error: 'Groq limit. Bir oz kuting.' });
+    }
     res.status(500).json({ error: 'Server xatosi. Keyinroq urinib ko\'ring.' });
   }
 });
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// API: GET /api/news?lang=uz — qonunchilik yangiliklari
-// ═══════════════════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════════════════════
+// GET /api/news?lang=uz — Yangiliklar
+// ════════════════════════════════════════════════════════════════════════════════
 app.get('/api/news', async (req, res) => {
-  const lang = ['uz','oz','ru','en'].includes(req.query.lang) ? req.query.lang : 'uz';
+  const validLangs = ['uz', 'oz', 'ru', 'en'];
+  const lang = validLangs.includes(req.query.lang) ? req.query.lang : 'uz';
   const cacheKey = `news_${lang}`;
 
-  // Return cached if fresh
+  // Keshdan qaytarish
   if (newsCache.has(cacheKey)) {
     const { data, ts } = newsCache.get(cacheKey);
     if (Date.now() - ts < CACHE_TTL) {
@@ -161,8 +176,8 @@ app.get('/api/news', async (req, res) => {
   }
 
   const langInstructions = {
-    uz: "O'zbek tilida (lotin) javob ber",
-    oz: "Ўзбек тилида (кирилл) жавоб бер",
+    uz: "O'zbek tilida (lotin alifbosi) javob ber",
+    oz: "Ўзбек тилида (кирилл алифбоси) жавоб бер",
     ru: "Отвечай на русском языке",
     en: "Answer in English",
   };
@@ -174,21 +189,15 @@ app.get('/api/news', async (req, res) => {
   };
 
   try {
-    const message = await client.messages.create({
-      model:      'claude-sonnet-4-20250514',
-      max_tokens: 1400,
-      system:     'Siz O\'zbekiston huquqiy yangiliklar mutaxassisisiz. Faqat sof JSON qaytaring, markdown yoki izoh yozmang.',
-      messages: [{
-        role:    'user',
-        content: `${langInstructions[lang]}. O'zbekiston qonunchiligi va huquqiy sohada so'nggi yangiliklar haqida 6 ta qisqa yangilik tuzib ber. Har biri uchun: title (sarlavha), desc (2 jumladan iborat tavsif), cat (quyidagilardan biri: ${catList[lang]}), date (2024 yoki 2025). Faqat JSON massiv: [{"title":"...","desc":"...","cat":"...","date":"..."}]`,
-      }],
-    });
+    const raw = await groqChat(
+      "Siz O'zbekiston huquqiy yangiliklar mutaxassisisiz. Faqat sof JSON qaytaring, boshqa hech narsa yozmang. Markdown ham yozmang.",
+      `${langInstructions[lang]}. O'zbekiston qonunchiligi va huquqiy sohada so'nggi yangiliklar haqida 6 ta qisqa yangilik. Format: [{"title":"...","desc":"...","cat":"...","date":"..."}]. Cat qiymatlari faqat: ${catList[lang]}. date: 2024 yoki 2025.`,
+      1000
+    );
 
-    let raw = message.content?.map(b => b.type === 'text' ? b.text : '').join('') || '[]';
-    raw = raw.replace(/```json|```/g, '').trim();
-    const items = JSON.parse(raw);
+    const cleaned = raw.replace(/```json|```/g, '').trim();
+    const items = JSON.parse(cleaned);
 
-    // Validate shape
     const clean = items.slice(0, 6).map(n => ({
       title: sanitize(String(n.title || ''), 200),
       desc:  sanitize(String(n.desc  || ''), 400),
@@ -200,8 +209,7 @@ app.get('/api/news', async (req, res) => {
     res.json(clean);
 
   } catch (err) {
-    console.error('[/api/news]', err.message);
-    // Return cached stale data if available
+    console.error('[/api/news] xato:', err.status, err.message);
     if (newsCache.has(cacheKey)) {
       return res.json(newsCache.get(cacheKey).data);
     }
@@ -209,21 +217,33 @@ app.get('/api/news', async (req, res) => {
   }
 });
 
-// ── Health check ─────────────────────────────────────────────────────────────
-app.get('/health', (_req, res) => res.json({ ok: true, ts: new Date().toISOString() }));
+// ── Health check ──────────────────────────────────────────────────────────────
+app.get('/health', (_req, res) => {
+  res.json({
+    ok: true,
+    ts: new Date().toISOString(),
+    api: 'Groq',
+    env: {
+      hasApiKey: !!process.env.GROQ_API_KEY,
+      nodeEnv: process.env.NODE_ENV || 'development',
+    }
+  });
+});
 
-// ── 404 → index.html (SPA) ───────────────────────────────────────────────────
+// ── SPA fallback ──────────────────────────────────────────────────────────────
 app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ── Global error handler (never leak stack traces) ───────────────────────────
+// ── Global xato handler ───────────────────────────────────────────────────────
 app.use((err, _req, res, _next) => {
   console.error('[unhandled]', err.message);
   res.status(500).json({ error: 'Ichki server xatosi.' });
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ AdvokatUA server ishga tushdi: http://localhost:${PORT}`);
-  console.log(`🔒 Rejim: ${PROD ? 'PRODUCTION' : 'DEVELOPMENT'}`);
+// ── Serverni ishga tushirish ──────────────────────────────────────────────────
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ AdvokatUA (Groq) server: http://0.0.0.0:${PORT}`);
+  console.log(`🔑 Groq API: ${process.env.GROQ_API_KEY ? '✅ topildi' : '❌ YO\'Q!'}`);
+  console.log(`🌍 Rejim: ${PROD ? 'PRODUCTION' : 'DEVELOPMENT'}`);
 });

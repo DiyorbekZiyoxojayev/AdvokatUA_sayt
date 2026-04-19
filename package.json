@@ -1,15 +1,14 @@
 {
   "name": "advokat-ua",
   "version": "1.0.0",
-  "description": "AdvokatUA — Huquqiy Yordam Sayti (Secure Backend)",
+  "description": "AdvokatUA — Huquqiy Yordam Sayti (Groq AI)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "setup": "npm install && cp .env.example .env && echo '✅ .env fayli yaratildi. API kalitingizni kiriting!'"
+    "build": "echo 'No build step'"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
