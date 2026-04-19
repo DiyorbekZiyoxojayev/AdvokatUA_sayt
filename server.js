@@ -47,20 +47,9 @@ async function groqChat(systemPrompt, userPrompt, maxTokens = 1200) {
   return data.choices?.[0]?.message?.content || '';
 }
 
-// ── Helmet CSP ────────────────────────────────────────────────────────────────
+// ── Helmet — CSP o'chirilgan (frontend inline script uchun) ──────────────────
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc:  ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      styleSrc:   ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-      fontSrc:    ["'self'", "https://fonts.gstatic.com", "data:"],
-      imgSrc:     ["'self'", "data:", "https:", "blob:"],
-      connectSrc: ["'self'", "https://api.groq.com", "https://*.onrender.com"],
-      frameSrc:   ["'none'"],
-      objectSrc:  ["'none'"],
-    },
-  },
+  contentSecurityPolicy: false,        // inline onclick/script uchun o'chirildi
   crossOriginEmbedderPolicy: false,
   crossOriginResourcePolicy: { policy: "cross-origin" },
 }));

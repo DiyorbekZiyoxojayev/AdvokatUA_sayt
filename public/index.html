@@ -300,18 +300,18 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
 <body>
 
 <!-- OVERLAY -->
-<div class="m-overlay" id="mOverlay" onclick="closeDrawer()"></div>
+<div class="m-overlay" id="mOverlay"></div>
 
 <!-- SIDE DRAWER -->
 <div class="m-drawer" id="drawer">
-  <button class="m-close" onclick="closeDrawer()">✕</button>
-  <a href="#home" onclick="closeDrawer()" data-i18n="nav_home">Bosh sahifa</a>
-  <a href="#services" onclick="closeDrawer()" data-i18n="nav_services">Xizmatlar</a>
-  <a href="#process" onclick="closeDrawer()" data-i18n="nav_process">Jarayon</a>
-  <a href="#testimonials" onclick="closeDrawer()" data-i18n="nav_testi">Mijozlar</a>
-  <a href="#news" onclick="closeDrawer()" data-i18n="nav_news">Yangiliklar</a>
-  <a href="#faq" onclick="closeDrawer()">FAQ</a>
-  <a href="#contact" onclick="closeDrawer()" data-i18n="nav_contact">Bog'lanish</a>
+  <button class="m-close">✕</button>
+  <a href="#home" data-i18n="nav_home">Bosh sahifa</a>
+  <a href="#services" data-i18n="nav_services">Xizmatlar</a>
+  <a href="#process" data-i18n="nav_process">Jarayon</a>
+  <a href="#testimonials" data-i18n="nav_testi">Mijozlar</a>
+  <a href="#news" data-i18n="nav_news">Yangiliklar</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact" data-i18n="nav_contact">Bog'lanish</a>
   <div class="m-drawer-bottom">
     <a href="tel:+998935719781" class="m-dc"><span class="ico">📱</span>+998 93 571 97 81</a>
     <a href="https://t.me/Advokatcolonel" target="_blank" class="m-dc"><span class="ico">✈️</span>@Advokatcolonel</a>
@@ -332,14 +332,14 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
   </ul>
   <div class="nav-right">
     <div class="lang-pills">
-      <button class="lp on" onclick="setLang('uz')">UZ</button>
-      <button class="lp" onclick="setLang('oz')">ЎЗ</button>
-      <button class="lp" onclick="setLang('en')">EN</button>
-      <button class="lp" onclick="setLang('ru')">RU</button>
+      <button class="lp on">UZ</button>
+      <button class="lp">ЎЗ</button>
+      <button class="lp">EN</button>
+      <button class="lp">RU</button>
     </div>
-    <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">🌙</button>
+    <button class="btn-theme" id="themeBtn">🌙</button>
     <a href="#contact" class="btn-nav" data-i18n="nav_cta">Bepul maslahat</a>
-    <button class="hamburger" id="hamburger" onclick="openDrawer()"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -385,15 +385,15 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
       </div>
     </div>
     <div class="srv-grid reveal" style="transition-delay:.1s">
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">⚖️</div><h3 data-i18n="s1h">Maslahat va tushuntirishlar</h3><p class="srv-brief" data-i18n="s1b">Og'zaki va yozma ravishda qonun hujjatlari bo'yicha professional tushuntirishlar.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s1"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🏛️</div><h3 data-i18n="s2h">Fuqarolik va iqtisodiy ishlarda vakillik</h3><p class="srv-brief" data-i18n="s2b">Meros, uy-joy, oilaviy nizolar, zarar qoplash va iqtisodiy sudlarda vakillik.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s2"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🛡️</div><h3 data-i18n="s3h">Jinoyat ishlari bo'yicha himoya</h3><p class="srv-brief" data-i18n="s3b">Dastlabki tergovdan sudgacha — har bir bosqichda to'liq huquqiy himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s3"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">💼</div><h3 data-i18n="s4h">Tadbirkorlik subyektlariga xizmat</h3><p class="srv-brief" data-i18n="s4b">Biznes hujjatlarini qonunga muvofiqlashtirish va tekshiruvlarda himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s4"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🏢</div><h3 data-i18n="s5h">Korporativ va biznes huquqi</h3><p class="srv-brief" data-i18n="s5b">Kompaniya tashkil qilishdan tugatishgacha — to'liq huquqiy hamrohlik.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s5"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">📋</div><h3 data-i18n="s6h">Shartnomaviy-huquqiy ishlar</h3><p class="srv-brief" data-i18n="s6b">Shartnomalarni ekspertizadan o'tkazish va lokal hujjatlarni tayyorlash.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s6"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🏠</div><h3 data-i18n="s7h">Ko'chmas mulk va yer masalalari</h3><p class="srv-brief" data-i18n="s7b">Mulk tozaligini tekshirish, yer huquqlarini rasmiylashtirish.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s7"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">👨‍👩‍👧</div><h3 data-i18n="s8h">Oilaviy va meros ishlari</h3><p class="srv-brief" data-i18n="s8b">Aliment, mol-mulk bo'linishi, meros va intellektual mulk huquqini himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s8"></ul></div>
-      <div class="srv-card" onclick="toggleSrv(this)"><div class="srv-icon-wrap">🔍</div><h3 data-i18n="s9h">Maxsus vakolat: advokatlik so'rovi</h3><p class="srv-brief" data-i18n="s9b">Davlat organlaridan hujjatlarni majburiy tartibda talabga ko'ra olish.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s9"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">⚖️</div><h3 data-i18n="s1h">Maslahat va tushuntirishlar</h3><p class="srv-brief" data-i18n="s1b">Og'zaki va yozma ravishda qonun hujjatlari bo'yicha professional tushuntirishlar.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s1"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">🏛️</div><h3 data-i18n="s2h">Fuqarolik va iqtisodiy ishlarda vakillik</h3><p class="srv-brief" data-i18n="s2b">Meros, uy-joy, oilaviy nizolar, zarar qoplash va iqtisodiy sudlarda vakillik.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s2"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">🛡️</div><h3 data-i18n="s3h">Jinoyat ishlari bo'yicha himoya</h3><p class="srv-brief" data-i18n="s3b">Dastlabki tergovdan sudgacha — har bir bosqichda to'liq huquqiy himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s3"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">💼</div><h3 data-i18n="s4h">Tadbirkorlik subyektlariga xizmat</h3><p class="srv-brief" data-i18n="s4b">Biznes hujjatlarini qonunga muvofiqlashtirish va tekshiruvlarda himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s4"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">🏢</div><h3 data-i18n="s5h">Korporativ va biznes huquqi</h3><p class="srv-brief" data-i18n="s5b">Kompaniya tashkil qilishdan tugatishgacha — to'liq huquqiy hamrohlik.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s5"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">📋</div><h3 data-i18n="s6h">Shartnomaviy-huquqiy ishlar</h3><p class="srv-brief" data-i18n="s6b">Shartnomalarni ekspertizadan o'tkazish va lokal hujjatlarni tayyorlash.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s6"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">🏠</div><h3 data-i18n="s7h">Ko'chmas mulk va yer masalalari</h3><p class="srv-brief" data-i18n="s7b">Mulk tozaligini tekshirish, yer huquqlarini rasmiylashtirish.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s7"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">👨‍👩‍👧</div><h3 data-i18n="s8h">Oilaviy va meros ishlari</h3><p class="srv-brief" data-i18n="s8b">Aliment, mol-mulk bo'linishi, meros va intellektual mulk huquqini himoya.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s8"></ul></div>
+      <div class="srv-card"><div class="srv-icon-wrap">🔍</div><h3 data-i18n="s9h">Maxsus vakolat: advokatlik so'rovi</h3><p class="srv-brief" data-i18n="s9b">Davlat organlaridan hujjatlarni majburiy tartibda talabga ko'ra olish.</p><button class="srv-toggle"><span data-i18n="see_more">Batafsil ko'rish</span> <span class="arr">↓</span></button><ul class="srv-sub" data-key="s9"></ul></div>
     </div>
   </div>
 </section>
@@ -427,9 +427,9 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
       <div class="testi-track" id="testiTrack"></div>
     </div>
     <div class="testi-controls">
-      <button class="testi-btn" onclick="testiMove(-1)">←</button>
+      <button class="testi-btn">←</button>
       <div class="testi-dots" id="testiDots"></div>
-      <button class="testi-btn" onclick="testiMove(1)">→</button>
+      <button class="testi-btn">→</button>
     </div>
   </div>
 </section>
@@ -443,7 +443,7 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
         <h2><span class="g" data-i18n="news_h2">Qonunchilik yangiliklari</span></h2>
         <p class="sec-sub" data-i18n="news_sub">O'zbekiston qonunchiligi va huquqiy sohada so'nggi o'zgarishlar.</p>
       </div>
-      <button class="news-refresh" id="newsRefresh" onclick="loadNews()">
+      <button class="news-refresh" id="newsRefresh">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
         <span data-i18n="news_refresh">Yangilash</span>
       </button>
@@ -454,9 +454,9 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
       </div>
     </div>
     <div class="news-controls">
-      <button class="news-btn" onclick="newsMove(-1)">←</button>
+      <button class="news-btn">←</button>
       <div class="news-dots" id="newsDots"></div>
-      <button class="news-btn" onclick="newsMove(1)">→</button>
+      <button class="news-btn">→</button>
     </div>
   </div>
 </section>
@@ -499,7 +499,7 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
           <label data-i18n="ai_desc">Vaziyatni qisqacha tasvirlab bering</label>
           <textarea id="docDesc" rows="4" placeholder="Masalan: Uy egasi menga ijara haqi to'lagan bo'lsam ham uyni bo'shatishni talab qilmoqda..."></textarea>
         </div>
-        <button class="btn-primary" id="genBtn" onclick="generateDoc()" data-i18n="ai_btn">✨ Hujjat yaratish</button>
+        <button class="btn-primary" id="genBtn" data-i18n="ai_btn">✨ Hujjat yaratish</button>
         <div class="ai-out" id="aiOut"></div>
       </div>
     </div>
@@ -548,7 +548,7 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
           </select>
         </div>
         <div class="cfield"><label data-i18n="cf_msg">Xabar</label><textarea id="cMsg" rows="4" maxlength="1000" placeholder="Muammoingizni qisqacha bayon qiling..."></textarea></div>
-        <button class="btn-primary" onclick="sendContact()" style="width:100%" data-i18n="cf_send">Xabar yuborish →</button>
+        <button class="btn-primary" style="width:100%" data-i18n="cf_send">Xabar yuborish →</button>
         <div class="form-msg" id="fMsg"></div>
       </div>
     </div>
@@ -570,7 +570,7 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
 <a href="https://t.me/Advokatcolonel" target="_blank" class="tg-btn">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
 </a>
-<button class="bk-top" id="bkTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="bk-top" id="bkTop">↑</button>
 
 <script>
 // ══════════════════════════════════════════════
@@ -1201,8 +1201,76 @@ function sendContact(){
 }
 
 // ══════════════════════════════════════════════
-// INIT
+// INIT — barcha event listenerlar shu yerda
 // ══════════════════════════════════════════════
+
+// Til tugmalari
+document.querySelectorAll('.lp').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const map = {'UZ':'uz','ЎЗ':'oz','EN':'en','RU':'ru'};
+    const l = map[this.textContent.trim()];
+    if(l) setLang(l);
+  });
+});
+
+// Tema tugmasi
+const themeBtn = document.getElementById('themeBtn');
+if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+// Hamburger
+const hamburgerBtn = document.getElementById('hamburger');
+if(hamburgerBtn) hamburgerBtn.addEventListener('click', openDrawer);
+
+// Overlay
+const mOverlay = document.getElementById('mOverlay');
+if(mOverlay) mOverlay.addEventListener('click', closeDrawer);
+
+// Drawer yopish tugmasi
+const mCloseBtn = document.querySelector('.m-close');
+if(mCloseBtn) mCloseBtn.addEventListener('click', closeDrawer);
+
+// Drawer linklari
+document.querySelectorAll('.m-drawer a').forEach(a => {
+  a.addEventListener('click', closeDrawer);
+});
+
+// Xizmat kartalar — batafsil ko'rish
+document.querySelectorAll('.srv-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    // srv-toggle tugmasini bosganda ham ishlash uchun
+    toggleSrv(this);
+  });
+});
+
+// Back to top
+const bkTopBtn = document.getElementById('bkTop');
+if(bkTopBtn) bkTopBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+// News refresh
+const newsRefreshBtn = document.getElementById('newsRefresh');
+if(newsRefreshBtn) newsRefreshBtn.addEventListener('click', loadNews);
+
+// AI hujjat yaratish
+const genBtn = document.getElementById('genBtn');
+if(genBtn) genBtn.addEventListener('click', generateDoc);
+
+// Contact yuborish
+const cfSendBtn = document.querySelector('[data-i18n="cf_send"]');
+if(cfSendBtn) cfSendBtn.addEventListener('click', sendContact);
+
+// Testimonial tugmalari
+const testiPrev = document.querySelector('.testi-btn:first-child');
+const testiNext = document.querySelector('.testi-btn:last-child');
+if(testiPrev) testiPrev.addEventListener('click', () => testiMove(-1));
+if(testiNext) testiNext.addEventListener('click', () => testiMove(1));
+
+// News tugmalari
+const newsPrev = document.querySelector('.news-btn:first-child');
+const newsNext = document.querySelector('.news-btn:last-child');
+if(newsPrev) newsPrev.addEventListener('click', () => newsMove(-1));
+if(newsNext) newsNext.addEventListener('click', () => newsMove(1));
+
+// Ishga tushirish
 setLang('uz');
 onScroll();
 </script>
