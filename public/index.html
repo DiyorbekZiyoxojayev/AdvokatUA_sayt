@@ -282,19 +282,48 @@ footer{background:#070710;border-top:1px solid var(--border);padding:2.5rem 5%}
 @media(max-width:900px){
   .nav-links{display:none}.hamburger{display:flex}
   .btn-nav{display:none}
+  .lang-pills .lp{padding:3px 6px;font-size:.68rem}
   .contact-grid{grid-template-columns:1fr;gap:2.5rem}
   .ai-row{grid-template-columns:1fr}
   .hero-stats{gap:1.5rem}
 }
 @media(max-width:640px){
   section{padding:4.5rem 1.25rem}
-  nav{padding:0 1.25rem}
-  .hero{padding:7rem 1.25rem 4rem}
-  .srv-grid{grid-template-columns:1fr}
-  .trust-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  nav{padding:0 1rem}
+  .hero{padding:7rem 1rem 4rem}
+
+  /* Hero title — ekrandan chiqmasin */
+  h1{font-size:clamp(2rem,9vw,3rem);letter-spacing:-.02em}
+  .hero-sub{font-size:.95rem}
+
+  /* Nav — lang pills kichikroq */
+  .lang-pills{gap:1px;padding:2px}
+  .lang-pills .lp{padding:3px 5px;font-size:.65rem}
+  .btn-theme{width:32px;height:32px;font-size:.9rem}
+
+  /* Trust kartalar — pastki matn kesilmasin */
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
+  .trust-card{padding:1.25rem 1rem}
+  .trust-num{font-size:1.6rem}
+  .trust-label{font-size:.72rem}
+  .trust-desc{font-size:.68rem}
+  .trust-icon{font-size:1.6rem;margin-bottom:.5rem}
+
+  /* Process */
   .process-steps{grid-template-columns:1fr}
-  .testi-card,.news-card,.news-skeleton{flex:0 0 calc(100% - 0rem)}
+
+  /* Carousel */
+  .testi-card,.news-card,.news-skeleton{flex:0 0 100%;min-width:0}
+
+  /* Service sub grid */
   .srv-sub-inner{grid-template-columns:1fr}
+
+  /* Floating tugmalar — telegram va back-to-top bir-biriga tegmasin */
+  .tg-btn{bottom:5rem;right:1rem;width:44px;height:44px;font-size:1.2rem}
+  .bk-top{bottom:1rem;right:1rem;width:38px;height:38px}
+
+  /* Footer */
+  .foot-inner{flex-direction:column;align-items:flex-start;gap:.75rem}
 }
 </style>
 </head>
