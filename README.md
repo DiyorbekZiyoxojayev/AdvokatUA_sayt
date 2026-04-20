@@ -12,9 +12,9 @@ advokatua/
 ├── .env                ← ⚠️ O'zingiz yaratasiz (Git ga yuklamang!)
 └── .gitignore
 ```
-## 1-qadam: Faylni joylashtir
 
-`index.html` ni `public/` papkasiga ko'chiring:
+## 1-qadam: Faylni joylashtir
+`index.html` ni `public/` papkasiga ko'chir:
 ```bash
 mkdir public
 mv index.html public/
@@ -23,13 +23,13 @@ mv index.html public/
 ```bash
 npm install
 ```
-## 3-qadam: .env faylini sozla:
+## 3-qadam: .env faylini sozla
 ```bash
 cp .env.example .env
 ```
-`.env` faylini oching va to'ldirdim:
+`.env` faylini och va to'ldir:
 ```env
-ANTHROPIC_API_KEY=sk-ant-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
+ANTHROPIC_API_KEY=gsk_RnZFzCdrsMnLIs919YykWGdyb3FY53MRneZ0SkI8W2whx2Ai8Edms
 PORT=3000
 NODE_ENV=production
 ALLOWED_ORIGINS=https://advokatua.uz,https://www.advokatua.uz
@@ -43,10 +43,12 @@ npm run dev
 ```
 Brauzerda oching: http://localhost:3000
 ---
+
 ```nginx
 server {
     listen 443 ssl;
     server_name advokatua.uz;
+    
     location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
