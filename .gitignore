@@ -1,4 +1,4 @@
-# ⚠️ Bu fayllar Git ga yuklanmasin!
+# Bu fayllar Git ga yuklanmasligi kerak!
 .env
 node_modules/
 *.log

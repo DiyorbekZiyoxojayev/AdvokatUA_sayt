@@ -914,18 +914,14 @@ const T={
     fc:"© 2025 Advokat UA. All rights reserved."}
 };
 
-// ══════════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════════
+
 let lang = 'uz';
 let testiIdx = 0, testiTimer;
 let newsIdx = 0, newsTimer;
 let newsItems = [];
 const rlMap = {ai:[]};
 
-// ══════════════════════════════════════════════
-// LANG
-// ══════════════════════════════════════════════
+
 function setLang(l){
   lang = l;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -948,9 +944,7 @@ function setLang(l){
   loadNews();
 }
 
-// ══════════════════════════════════════════════
-// THEME
-// ══════════════════════════════════════════════
+
 function toggleTheme(){
   const d = document.documentElement;
   const light = d.getAttribute('data-theme') === 'light';
@@ -958,9 +952,7 @@ function toggleTheme(){
   document.getElementById('themeBtn').textContent = light ? '🌙' : '☀️';
 }
 
-// ══════════════════════════════════════════════
-// DRAWER
-// ══════════════════════════════════════════════
+
 function openDrawer(){
   document.getElementById('drawer').classList.add('open');
   document.getElementById('mOverlay').classList.add('show');
@@ -974,9 +966,6 @@ function closeDrawer(){
   document.body.style.overflow = '';
 }
 
-// ══════════════════════════════════════════════
-// SCROLL
-// ══════════════════════════════════════════════
 const navEl = document.getElementById('mainNav');
 const progressEl = document.getElementById('navProgress');
 const sections = document.querySelectorAll('section[id]');
@@ -1004,9 +993,7 @@ const io = new IntersectionObserver(entries=>{
 function observeAll(){ document.querySelectorAll('.reveal').forEach(el=>io.observe(el)); }
 observeAll();
 
-// ══════════════════════════════════════════════
-// SERVICES
-// ══════════════════════════════════════════════
+
 function buildSub(ul, key, l){
   const items = (SI[l]||SI.uz)[key]||[];
   ul.innerHTML = `<div class="srv-sub-inner">${items.map((t,i)=>`<li><i class="srv-sub-icon">${i+1}</i>${t}</li>`).join('')}</div>`;
@@ -1021,9 +1008,6 @@ function toggleSrv(card){
   }
 }
 
-// ══════════════════════════════════════════════
-// TESTIMONIALS carousel
-// ══════════════════════════════════════════════
 function buildTestis(){
   const data = TESTIS[lang]||TESTIS.uz;
   const track = document.getElementById('testiTrack');
@@ -1066,9 +1050,6 @@ function testiMove(dir){
 }
 function testiGo(i){ testiIdx = i; testiApply(); }
 
-// ══════════════════════════════════════════════
-// NEWS carousel
-// ══════════════════════════════════════════════
 const newsLangMap={uz:"O'zbek tilida (lotin) javob ber",oz:"Ўзбек тилида (кирилл) жавоб бер",ru:"Отвечай на русском языке",en:"Answer in English"};
 const newsCats={uz:"Qonunchilik, Soliq, Mehnat, Biznes, Oila, Jinoyat",oz:"Қонунчилик, Солиқ, Меҳнат, Бизнес, Оила, Жиноят",ru:"Законодательство, Налоги, Трудовое, Бизнес, Семья, Уголовное",en:"Legislation, Tax, Labour, Business, Family, Criminal"};
 const newsCache = {};
@@ -1160,9 +1141,6 @@ function newsMove(dir){
 function newsGo(i){ newsIdx = i; newsApply(); }
 window.addEventListener('resize', ()=>{ testiApply(); newsApply(); });
 
-// ══════════════════════════════════════════════
-// FAQ
-// ══════════════════════════════════════════════
 function buildFaq(){
   const data = FAQS[lang]||FAQS.uz;
   const list = document.getElementById('faqList');
@@ -1186,9 +1164,7 @@ function toggleFaq(i){
   if(!wasOpen) item.classList.add('open');
 }
 
-// ══════════════════════════════════════════════
-// AI DOC
-// ══════════════════════════════════════════════
+
 async function generateDoc(){
   const type = document.getElementById('docType').value;
   const lng = document.getElementById('docLang').value;
@@ -1224,9 +1200,9 @@ async function generateDoc(){
   btn.disabled=false; btn.textContent='✨ Hujjat yaratish';
 }
 
-// ══════════════════════════════════════════════
-// CONTACT FORM
-// ══════════════════════════════════════════════
+
+
+
 function sendContact(){
   const name = document.getElementById('cName').value.trim();
   const phone = document.getElementById('cPhone').value.trim();
@@ -1239,11 +1215,8 @@ function sendContact(){
   st.className='form-msg ok'; st.textContent='✅ Telegram orqali yuborilmoqda. Tez orada javob beramiz!';
 }
 
-// ══════════════════════════════════════════════
-// INIT — barcha event listenerlar shu yerda
-// ══════════════════════════════════════════════
 
-// Til tugmalari
+
 document.querySelectorAll('.lp').forEach(btn => {
   btn.addEventListener('click', function() {
     const map = {'UZ':'uz','ЎЗ':'oz','EN':'en','RU':'ru'};
@@ -1252,7 +1225,7 @@ document.querySelectorAll('.lp').forEach(btn => {
   });
 });
 
-// Tema tugmasi
+
 const themeBtn = document.getElementById('themeBtn');
 if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
