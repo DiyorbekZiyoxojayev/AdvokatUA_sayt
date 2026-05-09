@@ -9,7 +9,7 @@ const crypto     = require('crypto');
 require('dotenv').config();
 
 // ══════════════════════════════════════════════════════
-// 1. ENV VALIDATION — ishga tushishdan oldin tekshirish
+// 1. ENV VALIDATION
 // ══════════════════════════════════════════════════════
 const REQUIRED = ['GROQ_API_KEY'];
 for (const key of REQUIRED) {
@@ -25,7 +25,7 @@ const PROD         = process.env.NODE_ENV === 'production';
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 // ══════════════════════════════════════════════════════
-// 2. LOGGER — xabarlar emas, faqat metadata
+// 2. LOGGER
 // ══════════════════════════════════════════════════════
 const log = {
   info : (...a) => console.log ('[INFO]',  new Date().toISOString(), ...a),
@@ -34,7 +34,7 @@ const log = {
 };
 
 // ══════════════════════════════════════════════════════
-// 3. INPUT VALIDATION — Joi o'rniga yengil yechim
+// 3. INPUT VALIDATION
 // ══════════════════════════════════════════════════════
 const VALID_TYPES = new Set(['ariza','shartnoma','shikoyat','pretenziya','vakola']);
 const VALID_LANGS = new Set(['uzbek_latin','uzbek_cyrillic','russian','english']);
@@ -62,13 +62,12 @@ function sanitize(str, max = 2000) {
 }
 
 // ══════════════════════════════════════════════════════
-// 5. CACHE — TTL + avtomatik tozalash
+// 5. CACHE
 // ══════════════════════════════════════════════════════
 class Cache {
   constructor(ttlMs) {
     this.ttl   = ttlMs;
     this.store = new Map();
-    // Har 5 daqiqada eskirgan yozuvlarni tozalash
     setInterval(() => {
       const now = Date.now();
       for (const [k, v] of this.store) {
@@ -85,10 +84,10 @@ class Cache {
   set(key, data) { this.store.set(key, { data, ts: Date.now() }); }
 }
 
-const newsCache = new Cache(30 * 60 * 1000); // 30 daqiqa
+const newsCache = new Cache(30 * 60 * 1000);
 
 // ══════════════════════════════════════════════════════
-// 6. GROQ API — timeout + retry
+// 6. GROQ API
 // ══════════════════════════════════════════════════════
 async function groqChat(system, user, maxTokens = 1200, timeoutMs = 12000) {
   const controller = new AbortController();
@@ -130,14 +129,14 @@ async function groqChat(system, user, maxTokens = 1200, timeoutMs = 12000) {
 }
 
 // ══════════════════════════════════════════════════════
-// 7. NONCE — har so'rovda yangi
+// 7. NONCE
 // ══════════════════════════════════════════════════════
 function genNonce() {
   return crypto.randomBytes(16).toString('base64');
 }
 
 // ══════════════════════════════════════════════════════
-// 8. HELMET — CSP nonce bilan (to'liq himoya)
+// 8. HELMET CSP with NONCE
 // ══════════════════════════════════════════════════════
 app.use((req, res, next) => {
   res.locals.nonce = genNonce();
@@ -176,7 +175,7 @@ app.use((req, res, next) => {
 });
 
 // ══════════════════════════════════════════════════════
-// 9. TRUST PROXY — faqat bitta daraja (Render)
+// 9. TRUST PROXY
 // ══════════════════════════════════════════════════════
 app.set('trust proxy', 1);
 
@@ -208,17 +207,15 @@ app.use(express.urlencoded({ extended: false, limit: '20kb' }));
 // ══════════════════════════════════════════════════════
 // 12. RATE LIMITERS
 // ══════════════════════════════════════════════════════
-// Global: 150 req / 15 daqiqa
 app.use(rateLimit({
   windowMs       : 15 * 60 * 1000,
   max            : 150,
   standardHeaders: true,
   legacyHeaders  : false,
   message        : { error: 'Juda ko\'p so\'rov. 15 daqiqadan so\'ng qayta urinib ko\'ring.' },
-  skip           : (req) => req.path === '/health', // health check limitlanmasin
+  skip           : (req) => req.path === '/health',
 }));
 
-// AI: 15 req / 5 daqiqa
 const aiLimiter = rateLimit({
   windowMs       : 5 * 60 * 1000,
   max            : 15,
@@ -226,7 +223,7 @@ const aiLimiter = rateLimit({
 });
 
 // ══════════════════════════════════════════════════════
-// 13. STATIC FILES — nonce injeksiya bilan
+// 13. STATIC HTML with NONCE INJECTION
 // ══════════════════════════════════════════════════════
 const fs = require('fs');
 const indexPath = path.join(__dirname, 'public', 'index.html');
@@ -244,7 +241,6 @@ try {
 // 14. API ROUTES
 // ══════════════════════════════════════════════════════
 
-// POST /api/document
 app.post('/api/document', aiLimiter, async (req, res) => {
   const validErr = validateDoc(req.body);
   if (validErr) return res.status(400).json({ error: validErr });
@@ -285,7 +281,6 @@ app.post('/api/document', aiLimiter, async (req, res) => {
   }
 });
 
-// GET /api/news
 app.get('/api/news', async (req, res) => {
   const lang = VALID_NEWS_LANGS.has(req.query.lang) ? req.query.lang : 'uz';
 
@@ -334,7 +329,6 @@ app.get('/api/news', async (req, res) => {
   }
 });
 
-// GET /health
 app.get('/health', (_req, res) => {
   res.json({
     ok    : true,
@@ -350,11 +344,10 @@ app.get('/health', (_req, res) => {
 });
 
 // ══════════════════════════════════════════════════════
-// 15. HTML — nonce ni <script> tegiga inject qilish
+// 15. HTML — nonce injection
 // ══════════════════════════════════════════════════════
 app.get('*', (req, res) => {
   const nonce = res.locals.nonce;
-  // <script> → <script nonce="...">
   const html = indexTemplate.replace(/<script>/g, `<script nonce="${nonce}">`);
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.send(html);
